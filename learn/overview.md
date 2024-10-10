@@ -4,7 +4,7 @@ icon: globe
 
 # Overview
 
-There are several perspectives on Anoma. We start by looking from the perspective of the end-user and then move progressively to the perspective of application development.
+There are several perspectives on Anoma. We start by looking from the perspective of the _end-user_ and then move progressively to the perspective of application development.
 
 <div data-full-width="true">
 
