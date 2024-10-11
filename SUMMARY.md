@@ -6,7 +6,7 @@
 
 ## LEARN
 
-* [Test](advanced/test.juvix.md)
+* [Test](docs/test.juvix.md)
 
 ## Advanced
 

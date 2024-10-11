@@ -9,5 +9,7 @@ module test;
 
 
 ```juvix
-axiom A : Type;
+  import Stdlib.Prelude open;
+  
+  main : String := "Hello world!";
 ```
