@@ -6,6 +6,8 @@
 
 ## LEARN
 
+* [Test](advanced/test.juvix.md)
+
 ## Advanced
 
 * [Advanced](advanced/advanced.md)
