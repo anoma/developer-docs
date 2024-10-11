@@ -2,9 +2,17 @@
 
 * [Anoma Overview](README.md)
 
-## Build
-
 ## LEARN
+
+* [Overview](learn/overview.md)
+* [What is Anoma?](learn/what-is-anoma/README.md)
+  * [What is an intent?](learn/what-is-anoma/what-is-an-intent.md)
+  * [What is a resource?](learn/what-is-anoma/what-is-a-resource.md)
+  * [What is a resource logic?](learn/what-is-anoma/what-is-a-resource-logic.md)
+  * [What is a transaction?](learn/what-is-anoma/what-is-a-transaction.md)
+* [Anoma Applications](learn/anoma-applications/README.md)
+  * [What is an Anoma application?](learn/anoma-applications/what-is-an-anoma-application.md)
+  * [What is application state?](learn/anoma-applications/what-is-application-state.md)
 
 ## Advanced
 
