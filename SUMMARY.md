@@ -2,8 +2,6 @@
 
 * [Anoma Overview](README.md)
 
-## Build
-
 ## LEARN
 
 * [Test](docs/test.juvix.md)
