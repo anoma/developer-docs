@@ -23,7 +23,7 @@ Open your terminal and navigate to your project directory. Initialize your first
 juvix init
 ```
 
-You will be prompted to enter the name of your project, let's go with `helloworld` and a version of your project, let's take the default `0.0.0` by pressing _Enter_.
+You will be prompted to enter the name of your project, let's go with `hello-world` and a version of your project, let's take the default `0.0.0` by pressing _Enter_.
 
 ## Adding a Juvix Module
 
