@@ -15,7 +15,7 @@ Before creating your first Anoma dApp, make sure to have [Juvix installed](../ge
 
 ## Setup a Juvix Project
 
-A Juvix project is a collection of Juvix modules and a `Package.juvix` file. You can find more detailed information on `Package.juvix` under [Write a Juvix Package](write-a-juvix-package.md).
+A Juvix project is a collection of Juvix modules and a `Package.juvix` file. You can find more detailed information on `Package.juvix` under [Write a Juvix Package](configure-a-juvix-package.md).
 
 Open your terminal and navigate to your project directory. Initialize your first project by running:
 
@@ -42,52 +42,6 @@ module HelloWorld;
 ```
 {% endcode %}
 
-Our `HelloWorld` program is supposed to output "Hello World!", of course. Thus, we first need to import the `String` type from the standard library prelude.
 
-{% code title="HelloWorld.juvix" fullWidth="false" %}
-```agda
-module HelloWorld;
-    
--- Importing the `String` type from the standard library prelude
-import Stdlib.Prelude open; 
-```
-{% endcode %}
 
-Now that we have access to `String`, we can add our "Hello World!" output.
-
-{% code title="HelloWorld.juvix" %}
-```agda
-module HelloWorld;
-
-import Stdlib.Prelude open;
-
-main : String := "Hello world!";
-```
-{% endcode %}
-
-## Compiling Juvix Project
-
-To compile `HelloWorld.juvix`, go to your terminal and type:
-
-```bash
-juvix compile native HelloWorld.juvix
-```
-
-This should result in the following project directory structure:
-
-```
-hello-world
-|- HelloWorld        -- compiled Unix Executable file
-|- HelloWorld.juvix
-|- Package.juvix
-```
-
-## Running Juvix Project
-
-Finally, we can run the compile Unix Executable file by typing the following in our terminal:
-
-```bash
-juvix eval HelloWorld.juvix
-```
-
-This should now result in the expected output `"Hello world!"`.
+<mark style="background-color:orange;">\[WIP HELLO WORLD RESOURCE OBJECT]</mark>
