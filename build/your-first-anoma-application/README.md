@@ -1,9 +1,11 @@
 ---
 icon: rocket-launch
-description: The following sets you up to build, run, and test your first Anoma dApp.
+description: >-
+  The following sets you up to build, run, and test your first Anoma
+  application.
 ---
 
-# Your First Anoma dApp
+# Your First Anoma Application
 
 ## Prerequisites
 
@@ -15,7 +17,7 @@ Additionally, you can learn how [write a Juvix project](write-a-juvix-project.md
 
 <mark style="background-color:orange;">\[Section about connecting to Client]</mark>
 
-## HelloWorld Anoma dApp
+## Building the HelloWorld Application
 
 #### Project Outline
 
@@ -41,10 +43,11 @@ juvix init
 
 Let's start by creating a new file that will contain our Resource.
 
+{% code title="# Inside ~/HelloWorld# Inside ~/HelloWorld" %}
 ```bash
-# Inside ~/HelloWorld
 touch Resource.juvix
 ```
+{% endcode %}
 
 Next, we preface our `Resource.juvix` file with the standard `module` and imports.
 
@@ -127,10 +130,11 @@ In the above code, we&#x20;
 
 Let's add our `label` in a separate file. Although the `label` is not a complex piece of code in this case, it is good practice to have a separate file for non-default Resource components.
 
+{% code title="# Inside ~/HelloWorld# Inside ~/HelloWorld" %}
 ```bash
-# Inside ~/HelloWorld
 touch Label.juvix
 ```
+{% endcode %}
 
 We can now populate the `Label.juvix` file with our `Hello World!` label.
 
@@ -189,12 +193,13 @@ mkHelloWorld : Resource :=
 
 Let's finish our HelloWorld application by adding functionality that allows us to read the label. To achieve this, we add `getLabel`, which is a special type of function, a projection function. You can think of it as a read function and it lives within the interface \[<mark style="background-color:orange;">LINK TO MODEL VIEW CONTROLLER VISUAL</mark>]. Thus, we create a separate folder, "Interface", and add our new projection function file in there.
 
+{% code title="# Inside ~/HelloWorld" %}
 ```bash
-# Inside ~/HelloWorld
 mkdir Interface
 cd Interface/
 touch Projection.juvix
 ```
+{% endcode %}
 
 We can now specify `getLabel`. It will take a parameter of type `Resource` and then access its label via `labelRef`.&#x20;
 
@@ -212,7 +217,7 @@ getLabel (resource : Resource) : Nat := Label.unLabel (Reference.from (Resource.
 {% endstep %}
 {% endstepper %}
 
-## Run the HelloWorld Application
+## Runing the HelloWorld Application
 
 <mark style="background-color:orange;">\[Continue section with progress from Paul's e2e integration work]</mark>
 

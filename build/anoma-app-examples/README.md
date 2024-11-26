@@ -4,7 +4,7 @@ icon: vial
 
 # Anoma App Examples
 
-## Kudos
-
-\[TBD]
+{% content-ref url="simplecounter.md" %}
+[simplecounter.md](simplecounter.md)
+{% endcontent-ref %}
 

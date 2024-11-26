@@ -1,8 +1,6 @@
 ---
-description: >-
-  The following helps you get started with building Anoma applications within 5
-  minutes.
 icon: screwdriver-wrench
+description: The following helps you get started within less than 5 minutes.
 ---
 
 # Getting Started
@@ -13,7 +11,7 @@ In order to get started, you need Clang / LLVM version 13 or later.&#x20;
 
 On macOS the preinstalled clang does not support the wasm target. Get started by using:
 
-```
+```bash
 brew install llvm
 ```
 
@@ -23,13 +21,13 @@ Use the following commands to install Juvix using Homebrew (macOS).
 
 To install the homebrew-juvix tap:
 
-```
+```bash
 brew tap anoma/juvix
 ```
 
 To install Juvix:
 
-```
+```bash
 brew install juvix
 ```
 
