@@ -1,7 +1,10 @@
-# Test
+# What is Anoma?
 
-```juvix
+TODO
+
+```agda
 module test;
+mystring : String := "hello world";
 ```
 
 ## This is a test.

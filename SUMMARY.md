@@ -15,7 +15,10 @@
 
 ## LEARN
 
-* [Test](docs/test.juvix.md)
+* [What is Anoma?](docs/test.juvix.md)
+* [Page](learn/page.md)
+* [Anoma's State Model](learn/anomas-state-model.md)
+* [Resources](learn/resources.md)
 
 ## Advanced
 
