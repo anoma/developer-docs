@@ -1,0 +1,8 @@
+site_name: My Docs
+
+nav: 
+  - index.md
+  - test.juvix.md
+
+plugins:
+  - juvix
