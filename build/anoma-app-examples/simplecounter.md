@@ -10,7 +10,7 @@ The following outlines the basics of the SimpleCounter example application. The 
 
 ## Prerequisites
 
-Before creating the SimpleCounter application, make sure to have [Juvix installed](../getting-started/install-juvix.md). Also consider looking at [Your First Anoma dApp](../your-first-anoma-application/) for some introductory explanations.
+Before creating the SimpleCounter application, make sure to have [Juvix installed](../../further-resources/advanced/juvix/install-juvix.md). Also consider looking at [Your First Anoma dApp](../your-first-anoma-application.md) for some introductory explanations.
 
 ## Let's write some SimpleCounter code
 
@@ -34,7 +34,7 @@ We first build the Resource Object (<mark style="background-color:orange;">link 
 
 {% stepper %}
 {% step %}
-### Building the Resource Object
+#### Building the Resource Object
 
 We start from the terminal and create a new `Resource` Juvix file.
 
@@ -42,7 +42,7 @@ We start from the terminal and create a new `Resource` Juvix file.
 touch Resource.juvix
 ```
 
-We start by sketching out the Resource Object function which we call `mkCounter`.&#x20;
+We start by sketching out the Resource Object function which we call `mkCounter`.
 
 {% code title="Resource.juvix" lineNumbers="true" %}
 ```agda
@@ -115,7 +115,7 @@ Let's now get to the meat of it and specify our Resource further - we start with
 {% endstep %}
 
 {% step %}
-### Resource Label
+#### Resource Label
 
 We start by creating a new file that will contain our Resource Label.
 
@@ -146,7 +146,7 @@ Throughout the documentation, we're trying to limit the ways we write Juvix code
 {% endstep %}
 
 {% step %}
-### Resource Logic
+#### Resource Logic
 
 Let's now write the most complex part of the Resource, the Resource Logic.
 
@@ -249,7 +249,7 @@ In order to have this compile, we need to code the `getCount` function first.
 {% endstep %}
 
 {% step %}
-### Projection function
+#### Projection function
 
 We should be able to do this quickly after everything we've learned so far. `getCount` is a special type of function, a projection function. You can think of it as a read function and it lives within the interface \[<mark style="background-color:orange;">LINK TO MODEL VIEW CONTROLLER VISUAL</mark>]. Thus, we create a separate folder, "Interface", and add our new projection function file in there.
 
@@ -286,7 +286,7 @@ Let's briefly circle back to `Resource.juvix` to finish our Resource Object.
 {% endstep %}
 
 {% step %}
-### Complete the Resource Object
+#### Complete the Resource Object
 
 We can now pass the missing Resource Object parameters by importing what we've been coding in the above steps.
 
@@ -316,21 +316,19 @@ mkCounter {count : Nat := 0} {ephemeral : Bool := false} : Resource :=
   };
 ```
 
-In order to pass the correct type, we use the `Reference.to` function. Our `mkCounter` resource now uses `counterLogic`, `counterLabel`, and `count`. As you've correctly noticed, we could've specified `valueRef` in Step 1 as the `count` argument was already present. However, we decided to build up some of the Juvix knowledge, like why we write argument passing from right-to-left, and now put it all together.&#x20;
+In order to pass the correct type, we use the `Reference.to` function. Our `mkCounter` resource now uses `counterLogic`, `counterLabel`, and `count`. As you've correctly noticed, we could've specified `valueRef` in Step 1 as the `count` argument was already present. However, we decided to build up some of the Juvix knowledge, like why we write argument passing from right-to-left, and now put it all together.
 
-We can now face the final boss of our `SimpleCounter` Anoma dApp, the transaction function. Besides the projection function we've already tackled, this is another special function that is part of the `Interface`. As the name suggests, the transaction function handles transactions.&#x20;
+We can now face the final boss of our `SimpleCounter` Anoma dApp, the transaction function. Besides the projection function we've already tackled, this is another special function that is part of the `Interface`. As the name suggests, the transaction function handles transactions.
 
 Let's dive into creating our `SimpleCounter` transaction function!
 {% endstep %}
 
 {% step %}
-### Transaction function
+#### Transaction function
 
 We first create `Transaction.juvix` inside our `Interface` directory (on the same level as `Projection.juvix`).
 {% endstep %}
 {% endstepper %}
-
-
 
 ## Target structure
 
@@ -346,6 +344,3 @@ counter
 |- Logic.juvix
 |- Resource.juvix
 ```
-
-
-

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Before creating your first Anoma dApp, make sure to have [Juvix installed](../getting-started/install-juvix.md).
+Before creating your first Anoma dApp, make sure to have [Juvix installed](install-juvix.md).
 
 ## Setup a Juvix Project
 

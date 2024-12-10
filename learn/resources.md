@@ -9,12 +9,7 @@ Resources are atomic units of application state and logic. They have
 | :---------------------: | :--------------------------: | :----------------------: |
 |    `5 Shell` resource   |    `2 GreenApple` resource   |   `1 Message` Resource   |
 
-*   a lifecycle with three stages,
-
-    ```mermaid
-    flowchart LR
-      Non-existent --> Created --> Consumed
-    ```
+* a lifecycle with three stages,
 * a logic function enforcing predicates (that check data, e.g., in itself, the transaction or other resources)
 
 <details>
@@ -48,19 +43,15 @@ type Resource :=
 
 </details>
 
-&#x20;
-
 ### Creation
 
-To create a resource, its _commitment_ must be computed by hashing the resource object. $$\texttt{commitment} := h_\texttt{cm}(\texttt{resource})$$&#x20;
+To create a resource, its _commitment_ must be computed by hashing the resource object. $$\texttt{commitment} := h_\texttt{cm}(\texttt{resource})$$
 
 $$
 \texttt{kind} := h_\texttt{kind}(\texttt{logic},\,\texttt{label})
 $$
 
 After execution, the commitment is added to a Merkle tree.
-
-
 
 ### **Consumption**
 

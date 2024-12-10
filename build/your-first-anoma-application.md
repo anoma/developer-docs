@@ -9,9 +9,9 @@ description: >-
 
 ## Prerequisites
 
-Before creating your first Anoma dApp, make sure to have [Juvix installed](../getting-started/install-juvix.md).
+Before creating your first Anoma dApp, make sure to have [Juvix installed](../further-resources/advanced/juvix/install-juvix.md).
 
-Additionally, you can learn how [write a Juvix project](write-a-juvix-project.md) to nail the very basics of coding in Juvix.
+Additionally, you can learn how [write a Juvix project](../further-resources/advanced/juvix/write-a-juvix-project.md) to nail the very basics of coding in Juvix.
 
 ## Anoma Client
 
@@ -39,7 +39,7 @@ juvix init
 
 {% stepper %}
 {% step %}
-### Building the HelloWorld Resource Object
+#### Building the HelloWorld Resource Object
 
 Let's start by creating a new file that will contain our Resource.
 
@@ -114,19 +114,17 @@ mkHelloWorld : Resource :=
 ```
 {% endcode %}
 
-In the above code, we&#x20;
+In the above code, we
 
 * assign `quantity` of 1 (line 9)
 * specify a non-emphemeral resource (in a sense, it can persist) (line 10)
-* assign the universal identity to `nullifierKeyCommitment` which is equal to an Identity  generated from a zero address (line 11)
+* assign the universal identity to `nullifierKeyCommitment` which is equal to an Identity generated from a zero address (line 11)
 * use builtin `rand` for our `nonce` (line 12)
 * and finally use builtin `rand` again for the `randSeed` (line 13)
-
-
 {% endstep %}
 
 {% step %}
-### Add HelloWorld Label
+#### Add HelloWorld Label
 
 Let's add our `label` in a separate file. Although the `label` is not a complex piece of code in this case, it is good practice to have a separate file for non-default Resource components.
 
@@ -189,7 +187,7 @@ mkHelloWorld : Resource :=
 {% endstep %}
 
 {% step %}
-### Add HelloWorld Projection Function
+#### Add HelloWorld Projection Function
 
 Let's finish our HelloWorld application by adding functionality that allows us to read the label. To achieve this, we add `getLabel`, which is a special type of function, a projection function. You can think of it as a read function and it lives within the interface \[<mark style="background-color:orange;">LINK TO MODEL VIEW CONTROLLER VISUAL</mark>]. Thus, we create a separate folder, "Interface", and add our new projection function file in there.
 
@@ -201,7 +199,7 @@ touch Projection.juvix
 ```
 {% endcode %}
 
-We can now specify `getLabel`. It will take a parameter of type `Resource` and then access its label via `labelRef`.&#x20;
+We can now specify `getLabel`. It will take a parameter of type `Resource` and then access its label via `labelRef`.
 
 {% code title="Interface/Projection.juvix" %}
 ```agda
@@ -220,6 +218,3 @@ getLabel (resource : Resource) : Nat := Label.unLabel (Reference.from (Resource.
 ## Runing the HelloWorld Application
 
 <mark style="background-color:orange;">\[Continue section with progress from Paul's e2e integration work]</mark>
-
-
-

@@ -4,14 +4,10 @@
 
 ## Build
 
-* [Getting Started](build/getting-started/README.md)
-  * [Install Juvix](build/getting-started/install-juvix.md)
-* [Your First Anoma Application](build/your-first-anoma-application/README.md)
-  * [Write a Juvix Project](build/your-first-anoma-application/write-a-juvix-project.md)
-  * [Configure a Juvix Package](build/your-first-anoma-application/configure-a-juvix-package.md)
+* [Getting Started](build/getting-started.md)
+* [Your First Anoma Application](build/your-first-anoma-application.md)
 * [Anoma App Examples](build/anoma-app-examples/README.md)
   * [SimpleCounter](build/anoma-app-examples/simplecounter.md)
-* [Installation Steps](build/installation-steps.md)
 
 ## LEARN
 
@@ -20,6 +16,11 @@
 * [Anoma's State Model](learn/anomas-state-model.md)
 * [Resources](learn/resources.md)
 
-## Advanced
+## Further Resources
 
-* [Advanced](advanced/advanced.md)
+* [Overview](further-resources/advanced/README.md)
+  * [Juvix](further-resources/advanced/juvix/README.md)
+    * [Installation Steps](further-resources/advanced/juvix/installation-steps.md)
+    * [Install Juvix](further-resources/advanced/juvix/install-juvix.md)
+    * [Write a Juvix Project](further-resources/advanced/juvix/write-a-juvix-project.md)
+    * [Configure a Juvix Package](further-resources/advanced/juvix/configure-a-juvix-package.md)
