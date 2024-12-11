@@ -1,5 +1,6 @@
 ---
 description: Learn how to build the SimpleCounter example application.
+hidden: true
 ---
 
 # SimpleCounter
