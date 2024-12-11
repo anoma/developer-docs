@@ -10,7 +10,7 @@ type Transaction :=
   };
 ```
 
-* **`actions`:** Contains
+* **`actions`:** Contains [actions](actions.md) constituting separate context for consumed and created resources.
 * **`roots`:** Computed for each consumed resource.
 * **`delta`:** Computed for each consumed resource.
 * **`deltaProof`:** Computed for each consumed resource.
