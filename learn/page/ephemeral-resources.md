@@ -1,2 +1,6 @@
+---
+hidden: true
+---
+
 # Ephemeral Resources
 
