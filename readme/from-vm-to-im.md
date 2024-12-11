@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # From VM to IM
 
 Anoma’s intent machine adds powerful functionality to the EVM, enabling fully expressive apps that are decentralized across the entire stack.&#x20;

@@ -1,9 +1,7 @@
 # Table of contents
 
 * [Overview](README.md)
-  * [What is Anoma?](readme/test.juvix/README.md)
-    * [Intent-Centric Dapps](readme/test.juvix/intent-centric-dapps.md)
-    * [From VM to IM](readme/test.juvix/from-vm-to-im.md)
+  * [From VM to IM](readme/from-vm-to-im.md)
 
 ## Build
 
@@ -34,9 +32,9 @@
 
 ## Further Resources
 
-* [Overview](further-resources/advanced/README.md)
-  * [Juvix](further-resources/advanced/juvix/README.md)
-    * [Installation Steps](further-resources/advanced/juvix/installation-steps.md)
-    * [Install Juvix](further-resources/advanced/juvix/install-juvix.md)
-    * [Write a Juvix Project](further-resources/advanced/juvix/write-a-juvix-project.md)
-    * [Configure a Juvix Package](further-resources/advanced/juvix/configure-a-juvix-package.md)
+* [Overview](further-resources/advanced.md)
+* [Juvix](further-resources/juvix/README.md)
+  * [Installation Steps](further-resources/juvix/installation-steps.md)
+  * [Install Juvix](further-resources/juvix/install-juvix.md)
+  * [Write a Juvix Project](further-resources/juvix/write-a-juvix-project.md)
+  * [Configure a Juvix Package](further-resources/juvix/configure-a-juvix-package.md)

@@ -31,7 +31,7 @@ To install Juvix:
 brew install juvix
 ```
 
-You can also install Juvix from binaries or from source, as detailed on the [Install Juvix](../further-resources/advanced/juvix/install-juvix.md) page.
+You can also install Juvix from binaries or from source, as detailed on the [Install Juvix](../further-resources/juvix/install-juvix.md) page.
 
 ## Juvix IDEs and plugins
 

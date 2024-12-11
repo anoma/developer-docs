@@ -9,9 +9,9 @@ description: >-
 
 ## Prerequisites
 
-Before creating your first Anoma dApp, make sure to have [Juvix installed](../further-resources/advanced/juvix/install-juvix.md).
+Before creating your first Anoma dApp, make sure to have [Juvix installed](../further-resources/juvix/install-juvix.md).
 
-Additionally, you can learn how [write a Juvix project](../further-resources/advanced/juvix/write-a-juvix-project.md) to nail the very basics of coding in Juvix.
+Additionally, you can learn how [write a Juvix project](../further-resources/juvix/write-a-juvix-project.md) to nail the very basics of coding in Juvix.
 
 ## Building the HelloWorld Application
 
