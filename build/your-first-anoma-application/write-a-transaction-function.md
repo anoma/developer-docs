@@ -4,9 +4,9 @@ description: >-
   Resource Object.
 ---
 
-# Write Transaction Function
+# Write a Transaction Function
 
-If you've followed [Write Resource Object](write-resource-object.md), you will have the basic building blocks to create the following Transaction function. To read up on the theoretical foundation of the following code, please visit [this part of the Learn Section](../../learn/applications/interface.md).
+If you've followed [Write Resource Object](define-a-resource.md), you will have the basic building blocks to create the following Transaction function. To read up on the theoretical foundation of the following code, please visit [this part of the Learn Section](../../learn/applications/interface.md).
 
 We're creating a new file which we're calling `Transaction.juvix`. Here, we will write functions which will ultimately initialize our Resource and build the transaction necessary to create the Resource. Essentially, this is achieve in 5 consecutive steps. We first write a function `prepareTransaction` which passes back an object of type `Transaction`. We then write an `initialize` function which makes use of the prepared transaction object. Next, we construct our standard inputs and stitch together the standard inputs and initialize function as a fourth step. Finally, we create a `main` function which return a `TransactionRequest` object.
 
@@ -181,4 +181,4 @@ main : TransactionRequest := TransactionRequest.fromTransaction tx;
 ```
 {% endcode %}
 
-In the [following chapter](build-and-run-helloworld.md), we will compile and "deploy" our code locally.
+In the [following chapter](run-your-app.md), we will compile and "deploy" our code locally.

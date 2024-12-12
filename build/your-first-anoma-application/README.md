@@ -5,7 +5,7 @@ description: >-
   application.
 ---
 
-# Your First Anoma Application
+# Your First Anoma App
 
 ## Prerequisites
 
@@ -33,4 +33,4 @@ juvix init
 ```
 {% endcode %}
 
-In the [next chapter,](write-resource-object.md) we're going to construct the scaffolding of the Resource Object and add our custom label.
+In the [next chapter,](define-a-resource.md) we're going to construct the scaffolding of the Resource Object and add our custom label.

@@ -1,4 +1,8 @@
-# Build and Run HelloWorld
+---
+description: This chapter explains how to run your HelloWorld application locally.
+---
+
+# Run your App
 
 Amazing, we have written the code we need to compile a HelloWorld Resource Object, create a transaction to initialize our HelloWorld resource, and finally we can read its label via our projection function. Let's run through these steps by starting with the setup of the local Anoma Client and Node.
 
@@ -19,8 +23,6 @@ Assuming you have successfully compiled the Anoma codebase, you can use the foll
 {% file src="../../.gitbook/assets/makefile" %}
 Makefile to start Anoma Client and Anoma Node, copy in project root
 {% endfile %}
-
-<mark style="background-color:orange;">TODO: Change</mark> <mark style="background-color:orange;"></mark><mark style="background-color:orange;">`makefile`</mark><mark style="background-color:orange;">to assume flat folder structure and one command for both client and node</mark>
 
 Open a new terminal in your project root:
 
