@@ -46,4 +46,4 @@ The above command will trigger our code to compile and get proved.
 
 ***
 
-:tada: **Congrats, you have successfully built and deployed your first Resource Object. We will soon add more functionality, e.g. to index your Resource and make use of custom Projection functions.**
+:tada: **Congrats! You have successfully built and deployed your first Resource Object. We will soon add more functionality, e.g. to index your Resource and make use of custom Projection functions.**
