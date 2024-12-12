@@ -1,21 +1,27 @@
+---
+description: >-
+  This chapter walks you through a transaction function which initializes our
+  Resource Object.
+---
+
 # Write Transaction Function
 
-Similar as for our projection function, we're creating a second file in our `Interface` folder which we're calling `Transaction.juvix`.
+If you've followed [Write Resource Object](write-resource-object.md), you will have the basic building blocks to create the following Transaction function. To read up on the theoretical foundation of the following code, please visit [this part of the Learn Section](../../learn/applications/interface.md).
 
-Here, we will write functions which will ultimately initialize our Resource and build the transaction necessary to create the Resource. Essentially, this is achieve in 5 consecutive steps. We first write a function `prepareTransaction` which passes back an object of type `Transaction`. We then write an `initialize` function which makes use of the prepared transaction object. Next, we construct our standard inputs and stitch together the standard inputs and initialize function as a fourth step. Finally, we create a `main` function which return a `TransactionRequest` object.
+We're creating a new file which we're calling `Transaction.juvix`. Here, we will write functions which will ultimately initialize our Resource and build the transaction necessary to create the Resource. Essentially, this is achieve in 5 consecutive steps. We first write a function `prepareTransaction` which passes back an object of type `Transaction`. We then write an `initialize` function which makes use of the prepared transaction object. Next, we construct our standard inputs and stitch together the standard inputs and initialize function as a fourth step. Finally, we create a `main` function which return a `TransactionRequest` object.
 
 Alright, let's start with preparing the `Transaction` object:
 
-{% code title="Interface/Transaction.juvix" %}
+{% code title="~/Transaction.juvix" %}
 ```agda
-module HelloWorld.Interface.Transaction;
+module Transaction;
 
 import Anoma open;
 import Applib open;
 import Stdlib.Prelude open;
 
 import Anoma.State.CommitmentTree open;
-import HelloWorld.Resource open;
+import Resource open;
 import BaseLayer.TransactionRequest open;
 
 --- prepareTransaction takes two lists of Resources and turns them into a Transaction object
@@ -45,7 +51,7 @@ The Applib library hides away some of the complexities of building Resources and
 
 Next, we write the `initialize` function:
 
-{% code title="Interface/Transaction.juvix" lineNumbers="true" %}
+{% code title="~/Transaction.juvix" lineNumbers="true" %}
 ```agda
 --- initialize injects nonces into the resources of a previously prepared transaction object
 ---
@@ -83,7 +89,7 @@ This is by far the most complex piece of code in this tutorial, so please take y
 
 Let's continue with the standard inputs which we will pass into our `initialize` function in the next step.
 
-{% code title="Interface/Transaction.juvix" %}
+{% code title="~/Transaction.juvix" %}
 ```agda
 std : StandardInputs :=
   mkStandardInputs@{
@@ -102,7 +108,7 @@ These default values are artifacts of the current devnet implementation.
 
 From now, it's pretty straightforward. We pass the standard inputs which we just defined into the `initialize` function from before.
 
-{% code title="Interface/Transaction.juvix" %}
+{% code title="~/Transaction.juvix" %}
 ```agda
 tx : Transaction := initialize std;
 ```
@@ -110,7 +116,7 @@ tx : Transaction := initialize std;
 
 And now we can finish the transaction file with the `main` function which creates the resulting `TransactionRequest` object from our constructed transaction.
 
-{% code title="Interface/Transaction.juvix" %}
+{% code title="~/Transaction.juvix" %}
 ```agda
 main : TransactionRequest := TransactionRequest.fromTransaction tx; 
 ```
@@ -118,16 +124,16 @@ main : TransactionRequest := TransactionRequest.fromTransaction tx;
 
 The completed code of our `Transaction.juvix` file should look like the following:
 
-{% code title="Interface/Transaction.juvix" %}
+{% code title="~/Transaction.juvix" %}
 ```agda
-module HelloWorld.Interface.Transaction;
+module Transaction;
 
 import Anoma open;
 import Applib open;
 import Stdlib.Prelude open;
 
 import Anoma.State.CommitmentTree open;
-import HelloWorld.Resource open;
+import Resource open;
 import BaseLayer.TransactionRequest open;
 
 initialize (standardInputs : StandardInputs) : Transaction :=
@@ -174,3 +180,5 @@ tx : Transaction := initialize std;
 main : TransactionRequest := TransactionRequest.fromTransaction tx;
 ```
 {% endcode %}
+
+In the [following chapter](build-and-run-helloworld.md), we will compile and "deploy" our code locally.

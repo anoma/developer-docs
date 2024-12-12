@@ -1,3 +1,9 @@
+---
+description: >-
+  In this chapter, we're writing the Resource Object and giving it a custom
+  label, "Hello World!".
+---
+
 # Write Resource Object
 
 {% stepper %}
@@ -185,3 +191,4 @@ mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
 {% endstep %}
 {% endstepper %}
 
+[Next](write-transaction-function.md), we're going to build the Transaction function which will be used to initialize the Resource Object via transaction we manually prepare with our code.

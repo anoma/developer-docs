@@ -9,7 +9,7 @@ The Anoma Application Example will feature a list of examples and will be contin
 
 #### List of future Anoma application examples
 
-* SimpleCounter
+* Counter
 * Rock-Paper-Scissors
 * Kudos
 

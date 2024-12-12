@@ -8,9 +8,11 @@ Amazing, we have written the code we need to compile a HelloWorld Resource Objec
 The following way of running the Anoma Client and Node are temporary and thus, Work-In-Progress areas which are specific to the **current stage of devnet**.
 {% endhint %}
 
-First and foremost, we need a local version of the `testnet-01` branch of [Anoma's codebase](https://github.com/anoma/anoma/tree/testnet-01), install its dependencies, and compile the code. For a detailed description on how to do these steps, please follow this [README](https://github.com/anoma/anoma/blob/testnet-01/README.md).
+First and foremost, we need a local version of the `artem/juvix-node-integration-v0.28` branch of [Anoma's codebase](https://github.com/anoma/anoma/tree/testnet-01), install its dependencies, and compile the code. For a detailed description on how to do these steps, please follow this [README](https://github.com/anoma/anoma/blob/testnet-01/README.md).
 
-<mark style="background-color:orange;">TODO: Make sure test</mark> <mark style="background-color:orange;"></mark><mark style="background-color:orange;">`testnet-01`</mark><mark style="background-color:orange;">branch is working by testing on clean device</mark>
+{% hint style="danger" %}
+The recommended branch will soon change to `testnet-01` , once integrations have been merged.
+{% endhint %}
 
 Assuming you have successfully compiled the Anoma codebase, you can use the following `makefile` to start the Anoma Client and Anoma Node.
 
@@ -40,8 +42,6 @@ make add-transaction
 
 The above command will trigger our code to compile and get proved.
 
-### Calling the Projection Function
+***
 
-The last step of what we would like to do with our HelloWorld resource is retrieve its label by calling the projection function.
-
-<mark style="background-color:orange;">TODO: Add call to projection function</mark>
+:tada: **Congrats, you have successfully built and deployed your first Resource Object. We will soon add more functionality, e.g. to index your Resource and make use of custom Projection functions.**

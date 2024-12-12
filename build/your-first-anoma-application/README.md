@@ -17,7 +17,7 @@ Additionally, you can learn how [write a Juvix project](../../further-resources/
 
 ### Project Outline
 
-The goal of this application is to create 1) _an Anoma Resource_ with 2) _a `label` "HelloWorld!"_ and two interface functions, 3) _a function to read_ _the_ `label` from the Resource Object as well as 4) _a 'write' function_ to create transactions.
+The goal of this application is to create 1) _an Anoma Resource_ with 2) _a `label` "HelloWorld!"_, and 3) _a 'write' function_ to initialize the resource via transaction.
 
 ### Project Setup
 
@@ -32,3 +32,5 @@ juvix init
 # (2) Finally, press 'Enter' to choose the default version number
 ```
 {% endcode %}
+
+In the [next chapter,](write-resource-object.md) we're going to construct the scaffolding of the Resource Object and add our custom label.
