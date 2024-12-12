@@ -20,7 +20,16 @@ hidden: true
 * **Compliance Proof:** TODO
 * **Resource Logic Proof:** TODO
 * **Service:** TODO
+* **Service Providers:** TODO
+* **Service Commitment:** TODO
 * **Indexer:** TODO
 * **Indexing:** TODO
 * **Solver:** TODO
 * **Solving:** TODO
+* **intent gossip network:** TODO
+* **Intent pool:** TODO
+* **Mempool:** TODO
+* **BLOBs:** TODO
+* **BLOB Storage:** TODO
+* **Binding References:** TODO
+

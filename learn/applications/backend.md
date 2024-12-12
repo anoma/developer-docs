@@ -4,7 +4,7 @@ description: This page explains how resources constitute the application backend
 
 # Backend
 
-Resources are not formally associated with applications. However, resources related to an application can be identified and queried by their kind.
+Resources are not formally associated with applications. However, resources related to an application can be identified and queried by their kind (see [indexing.md](../services/indexing.md "mention")).
 
 Accordingly, consumed resources constitute **historical application state**, whereas created (i.e., unconsumed) resources constitute the **current application state**.
 

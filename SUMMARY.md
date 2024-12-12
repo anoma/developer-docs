@@ -28,11 +28,13 @@
 * [Transactions](learn/transactions/README.md)
   * [Transaction Object](learn/transactions/transaction-object.md)
   * [Actions](learn/transactions/actions.md)
-  * [Intents & Solving](learn/transactions/intents-and-solving.md)
+  * [Intents](learn/transactions/intents.md)
 * [Applications](learn/applications/README.md)
   * [Backend](learn/applications/backend.md)
   * [Interface](learn/applications/interface.md)
-  * [Services](learn/applications/services.md)
+* [Services](learn/services/README.md)
+  * [Indexing](learn/services/indexing.md)
+  * [Solving](learn/services/solving.md)
 
 ## Further Resources
 

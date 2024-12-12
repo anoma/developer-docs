@@ -6,11 +6,30 @@ description: >-
 
 # Interface
 
-The interface consists of
+The application interface consists of two components:
 
-* Projection functions (the application **read interface**)
-  * Outputs meaningful data projected from the state
-  * Example: The total quantity of resources of specific kind owned by an identity
-* Transaction function (the application **write interface**)
-  * Outputs a transaction object
-  * Example: Transfer of a resource to a new owner.
+1. **Transaction function** representing the **application** **write interface**.
+2. **Projection functions** representing the **application** **read interface**.
+
+## Transaction Functions&#x20;
+
+Transaction functions take arbitrary input data and output a [transaction object](../transactions/transaction-object.md). Besides populating the transaction object with the required data[^1], they also take care of checking the input arguments for correctness and can return error messages.
+
+Transaction function examples are
+
+* A `transfer  (caller receiver : Identity)  (toTransfer : Resource) : Transaction`  function consuming an owned resource and creating one owned by a receiver.
+* A `merge (caller : Identity) : (toMerge : List Resource) : Transaction`  function merging a list of resources into one.
+* A `swap (caller : Identity) (give want : List Resources) : Transation` function consuming a list of resources and specifying a list of resource kinds and quantities that the caller wants to receive in return.
+
+## Projection Functions
+
+Projection functions project data from the state (usually being fragmented into many different resources) into a format being useful to application users. As such, they take a list of resources as input and output arbitrary data.&#x20;
+
+Projection function examples are
+
+* A `totalBalance (ownedTokens : List Resources) : Quantity` function returning the total quantity of resources of a specific kind being owned by an owner identity.
+* A `chatHistory(messages : List Resource) : List String`  function that returns the chat messages of a message channel.
+
+Commonly, the input resources passed to projection functions are obtained after indexing and custom-filtering, e.g., from an [indexing service provider](../services/indexing.md). &#x20;
+
+[^1]: I.e., actions as well as commitments, nullifiers, and application data therein, proofs, the transaction delta value and state roots.
