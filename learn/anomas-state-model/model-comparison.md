@@ -1,5 +1,5 @@
 ---
-description: The following compares Anoma's resource model with the account and UTXO model.
+description: This page compares Anoma's resource model with the account and UTXO model.
 ---
 
 # Model Comparison

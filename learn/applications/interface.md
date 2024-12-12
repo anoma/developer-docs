@@ -1,3 +1,9 @@
+---
+description: >-
+  This page explains the application interface which is constituted by
+  projection and transaction functions.
+---
+
 # Interface
 
 The interface consists of

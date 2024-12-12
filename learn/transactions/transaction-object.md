@@ -1,3 +1,7 @@
+---
+description: This page describes the structure of the transaction object in detail.
+---
+
 # Transaction Object
 
 Transactions contain all the data required to conduct an Anoma state transition.

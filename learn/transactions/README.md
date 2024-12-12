@@ -1,12 +1,11 @@
 ---
 icon: arrow-right-arrow-left
+description: This page introduces transaction transitioning the Anoma state upon execution.
 ---
 
 # Transactions
 
-Transactions transition the Anoma state by consuming and creating resources.
-
-Transactions with equal quantities of created and consumed resources of the same [kind](../resources/#resource-kind) are **balanced**. Furthermore, a transaction is **valid** if all resource logics functions are valid and the resource consumption and creation is compliant with the [Anoma resource machine](../page/) rules.
+Transactions transition the Anoma state by consuming and creating resources when they are executed. Transactions with equal quantities of created and consumed resources of the same [kind](../resources/#resource-kind) are **balanced**. Furthermore, a transaction is **valid** if all resource logics functions are valid and the consumptions and creations are compliant with the [Anoma resource machine](../page/) rules.
 
 Only balanced and valid transactions can be executed.
 

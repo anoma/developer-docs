@@ -1,3 +1,7 @@
+---
+description: This page explains how intents and solving work.
+---
+
 # Intents & Solving
 
 I**ntents** are unbalanced transactions requiring matching unbalanced transaction by one or multiple counterparties. This works as follows.

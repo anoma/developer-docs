@@ -1,10 +1,13 @@
 ---
 icon: circle
+description: >-
+  This page introduces resources, the state and logic they carry, and their
+  lifecycle in the Anoma protocol.
 ---
 
 # Resources
 
-Resources are atomic units of application state and logic. In the following, we give an overview about&#x20;
+Resources are **atomic units of state and logic**. In the following, we give an overview of the resource state,  resource logics, data that can be derived from resources, as well as their lifecycle in the Anoma protocol.
 
 ## Resource State
 
@@ -26,9 +29,9 @@ In the [resource object](resource-object.md) section, you will learn more detail
 
 Besides state, resources are associated with a **logic function**. The logic function enforces predicates checking data, e.g., in the resource itself, the transaction or resources in the same transaction context.
 
-|                                           💵 Logic                                           |                            🍏 Logic                           |  💌  Logic                                                          |
-| :------------------------------------------------------------------------------------------: | :-----------------------------------------------------------: | ------------------------------------------------------------------- |
-| This resource can only be transferred if the owner signs a message specifying the new owner. | This apple can only be eaten if the fruitness is at least 3.  | This message can only be edited by the author encoded in the label. |
+|                                         💵 Logic                                        |                         🍏 Logic                         |  💌  Logic                                                           |
+| :-------------------------------------------------------------------------------------: | :------------------------------------------------------: | -------------------------------------------------------------------- |
+| This resource can be transferred if the owner signs a message specifying the new owner. | This apple can be eaten if the fruitness is at least 3.  | This message can be edited by the author being encoded in the label. |
 
 ## Resource Kind
 
@@ -40,7 +43,7 @@ $$
 
 The kind is used to check if transactions are balanced (which will be explained in the [resource machine](../page/) setion) and is a requirement for a transaction to be executed.
 
-## Lifecyle
+## Lifecycle
 
 Resources have a lifecycle with three stages:
 

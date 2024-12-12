@@ -1,5 +1,6 @@
 ---
 icon: mobile-screen-button
+description: This page gives an overview of the different application components.
 ---
 
 # Applications

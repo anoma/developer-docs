@@ -1,4 +1,5 @@
 ---
+description: This page describes the structure of the resource object in detail.
 layout:
   title:
     visible: true
