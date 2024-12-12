@@ -20,19 +20,19 @@ For the current private devnet, the Anoma node is running a brute-force solver. 
 | ------------- | ---------- |
 | 1🍏 `{Alice}` | 1🍏`{Bob}` |
 
-Alice's consumes here apple resource and creates one with Bob as the owner. This transaction is already balanced and therefore requires no solving. It can be executed straight away.
-
 (Names in curly braces indicate the resource owner.)
+
+Alice's consumes here apple resource and creates one with Bob as the owner. This transaction is already balanced and therefore requires no solving. It can be executed straight away.
 {% endtab %}
 
 {% tab title="Basic Intent" %}
-(names in curly braces indicate the resource owner)
-
 **Alice's unbalanced txn (Intent)**
 
 | Consume       | Create       |
 | ------------- | ------------ |
 | 1🍏 `{Alice}` | 1🥖`{Alice}` |
+
+(Names in curly braces indicate the resource owner.)
 
 #### **Bob's unbalanced txn (Intent)**
 
@@ -48,8 +48,6 @@ Alice's consumes here apple resource and creates one with Bob as the owner. This
 | 1🥖 `{Bob}`   | 1🥖 `{Alice}` |
 
 After composing Alice's and Bob's transactions into one, the transaction is now balanced and can be executed. After execution, Alice has swapped her apple for a baguette, while Bob has done it the other way around.
-
-(Names in curly braces indicate the resource owner.)
 {% endtab %}
 {% endtabs %}
 
