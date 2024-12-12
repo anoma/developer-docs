@@ -42,5 +42,7 @@ This transaction is balanced already, requires no solving, and can be executed s
 | --------------------- | --------------------- |
 | 1🍏 `{owner : Alice}` | 1🍏 `{owner : Bob}`   |
 | 1🥖 `{owner : Bob}`   | 1🥖 `{owner : Alice}` |
+
+After composing Alice's and Bob's transactions into one, the transaction is now balanced and can be executed. After execution, Alice has swapped her apple for a baguette, while Bob has done it the other way around.
 {% endtab %}
 {% endtabs %}
