@@ -6,7 +6,11 @@
 ## Build
 
 * [Getting Started](build/getting-started.md)
-* [Your First Anoma Application](build/your-first-anoma-application.md)
+* [Your First Anoma Application](build/your-first-anoma-application/README.md)
+  * [Write Resource Object](build/your-first-anoma-application/write-resource-object.md)
+  * [Write Projection Function](build/your-first-anoma-application/write-projection-function.md)
+  * [Write Transaction Function](build/your-first-anoma-application/write-transaction-function.md)
+  * [Build and Run HelloWorld](build/your-first-anoma-application/build-and-run-helloworld.md)
 * [Anoma App Examples](build/anoma-app-examples/README.md)
   * [SimpleCounter](build/anoma-app-examples/simplecounter.md)
 
