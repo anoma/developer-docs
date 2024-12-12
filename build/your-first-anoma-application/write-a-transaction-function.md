@@ -181,4 +181,4 @@ main : TransactionRequest := TransactionRequest.fromTransaction tx;
 ```
 {% endcode %}
 
-In the [following chapter](run-your-app.md), we will compile and "deploy" our code locally.
+In the following chapter, we will compile and "deploy" our code locally.

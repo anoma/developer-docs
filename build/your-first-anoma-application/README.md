@@ -33,4 +33,4 @@ juvix init
 ```
 {% endcode %}
 
-In the [next chapter,](define-a-resource.md) we're going to construct the scaffolding of the Resource Object and add our custom label.
+In the following chapter, we're going to construct the scaffolding of the Resource Object and add our custom label.
