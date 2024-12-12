@@ -1,8 +1,6 @@
 # Actions
 
-Actions are part of the transaction data structure and separate the transaction into distinct contexts.&#x20;
-
-* Created and consumed resources can only see and related to each other if they are part of the same action.
+Actions are part of the [transaction data structure](transaction-object.md) and separate the transaction into distinct contexts. Created and consumed resources can only see and relate to each other if they are part of the same action.
 
 ```agda
 type Action :=

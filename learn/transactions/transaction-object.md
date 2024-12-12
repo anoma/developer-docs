@@ -1,5 +1,7 @@
 # Transaction Object
 
+Transactions contain all the data required to conduct an Anoma state transition.
+
 ```agda
 type Transaction :=
   mkTransaction@{
@@ -10,9 +12,9 @@ type Transaction :=
   };
 ```
 
-* **`actions`:** Contains [actions](actions.md) constituting separate context for consumed and created resources.
-* **`roots`:** Computed for each consumed resource.
-* **`delta`:** Computed for each consumed resource.
-* **`deltaProof`:** Computed for each consumed resource.
+* **`actions`:** A list of [actions](actions.md) constituting separate contexts for consumed and created resources.
+* **`roots`:** A list of roots being required to prove that consumed resources have been created before.
+* **`delta`:** The transaction delta indicating if a transaction is balanced or not.
+* **`deltaProof`:** A proof that the transaction is balanced being required in the shielded case.
 
-For more details you can visit the [Anoma specs page](https://specs.anoma.net/latest/arch/system/state/resource_machine/index.html).
+Further information can be found on the [Anoma specs page](https://specs.anoma.net/latest/arch/system/state/resource_machine/index.html).

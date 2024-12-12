@@ -14,7 +14,7 @@ layout:
 
 # Resource Object
 
-The resource object is a data structure that contains multiple fields;
+The resource object is a data structure that contains multiple fields.
 
 ```agda
 type Resource :=
@@ -47,4 +47,4 @@ type Resource :=
 * **`randSeed`**\
   A number to derive (pseudo)-randomness from that might be used in apps.
 
-For more details, visit the [Anoma specs page](https://specs.anoma.net/latest/arch/system/state/resource_machine/index.html).
+Further information can be found on the [Anoma specs page](https://specs.anoma.net/latest/arch/system/state/resource_machine/index.html).

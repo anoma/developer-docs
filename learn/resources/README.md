@@ -6,7 +6,7 @@ icon: circle
 
 Resources are atomic units of application state and logic. In the following, we give an overview about&#x20;
 
-## Overview: Resource State
+## Resource State
 
 Resources are associated with state, i.e., a **label**, a **quantity** and a **value**.
 
@@ -20,17 +20,15 @@ The **quantity** indicates the number of units that the resource represents. In 
 | :------------------------: | :--------------------------: | ------------------------ |
 |      `10 USD` resource     |    `2 GreenApple` resource   | `1 Message` Resource     |
 
-In the [resource-object.md](resource-object.md "mention")section, you will learn more details about the resource object and its state.
+In the [resource object](resource-object.md) section, you will learn more details about the resource object and its state.
 
-## Overview: Resource Logic
+## Resource Logic
 
-Besides state, resources are associated with a logic function. The logic function enforces predicates (that check data, e.g., in the resource itself, the transaction or resources in the same transaction context)
+Besides state, resources are associated with a **logic function**. The logic function enforces predicates checking data, e.g., in the resource itself, the transaction or resources in the same transaction context.
 
 |                                           💵 Logic                                           |                            🍏 Logic                           |  💌  Logic                                                          |
 | :------------------------------------------------------------------------------------------: | :-----------------------------------------------------------: | ------------------------------------------------------------------- |
 | This resource can only be transferred if the owner signs a message specifying the new owner. | This apple can only be eaten if the fruitness is at least 3.  | This message can only be edited by the author encoded in the label. |
-
-
 
 ## Resource Kind
 
@@ -85,3 +83,7 @@ $$
 $$
 
 The nullifier is then put into a [transaction](../transactions/).  After execution, the nullifier is added to a nullifier set. This nullification mechanism makes the consumption of the resource unlinkable to its past creation.
+
+### **Ephemeral Resources**
+
+In some cases, it makes is required to create resources that just exists over the course of the transaction. These resources are called **ephemeral** and can be identified by a dedicated flag in the [resource object data structure](resource-object.md). This is often used to balance out transactions that otherwise would be unbalanced, for example, when resources are initially created or finally consumed. Another use case is to write advanced [intents](../transactions/intents-and-solving.md) that express optionality or have more sophisticated constraints. The latter is achieved by creating an ephemeral intent resource expressing the preferred state transition and constraints that can then be matched and consumed by a solver.

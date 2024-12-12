@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Key Terms
 
 * **Controller:** TODO
