@@ -17,7 +17,7 @@ P2P nodes running the Anoma protocol can provide different services to each othe
 * **Compute**\
   Performing computations and providing proofs-of-correctness upon request.&#x20;
 * **Ordering**\
-  Ordering of transactions on request and maintaining safety (i.e., no double-spends)
+  Ordering of transactions on request and maintaining safety (i.e., no double-spends).
 
 More advanced services can result from the composition of elementary services, such as
 
