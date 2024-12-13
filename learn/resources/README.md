@@ -9,23 +9,29 @@ description: >-
 
 Resources are **atomic units of state and logic**. In the following, we give an overview of the resource state,  resource logics, data that can be derived from resources, as well as their lifecycle in the Anoma protocol.
 
-## Resource State
+## State
 
 Resources are associated with state, i.e., a **label**, a **quantity** and a **value**.
 
-The **label** can contain arbitrary data describing the resource and determining its [kind](./#resource-kind). Examples for label data are the name and symbol of a currency, the species of an apple, or a message associated with a specific channel in a messaging application.
+### Label
 
-The **value** field can contain arbitrary data associated with this specific resource.  Examples for value data are information about the owner, the fruitiness of a fruit, or the text in a message. The difference to the label field is that this data is not influencing the [resource kind](./#resource-kind).
+The label can contain arbitrary data describing the resource and determining its [kind](./#resource-kind). Examples for label data are the name and symbol of a currency, the species of an apple, or a message associated with a specific channel in a messaging application.
 
-The **quantity** indicates the number of units that the resource represents. In practice, resources are often split and joined. For example, Alice owning a 10 USD resource might want to give 4 USD to pay someone and keep the remaining 6 for herself. In some cases, only one resource instance should ever exist (e.g., for a message or an NFT).
+### Value
+
+The value field can contain arbitrary data associated with this specific resource.  Examples for value data are information about the owner, the fruitiness of a fruit, or the text in a message. The difference to the label field is that this data is not influencing the [resource kind](./#resource-kind).
+
+### Quantity
+
+The quantity indicates the number of units that the resource represents. In practice, resources are often split and joined. For example, Alice owning a 10 USD resource might want to give 4 USD to pay someone and keep the remaining 6 for herself. In some cases, only one resource instance should ever exist (e.g., for a message or an NFT).
 
 | 10 💵 `{owner : 0x123...}` | 2 🍏 `{fruitiness : 8 / 10}` | 1 💌 `{text : "I ❤️ u"}` |
 | :------------------------: | :--------------------------: | ------------------------ |
 |      `10 USD` resource     |    `2 GreenApple` resource   | `1 Message` Resource     |
 
-In the [resource object](resource-object.md) section, you will learn more details about the resource object and its state.
+There are more fields that are part of the resource object and make up its state. To learn about them, visit the [resource object](resource-object.md) section.
 
-## Resource Logic
+## Logic
 
 Besides state, resources are associated with a **logic function**. The logic function enforces predicates checking data, e.g., in the resource itself, the transaction or resources in the same transaction context.
 
@@ -33,7 +39,7 @@ Besides state, resources are associated with a **logic function**. The logic fun
 | :-------------------------------------------------------------------------------------: | :------------------------------------------------------: | -------------------------------------------------------------------- |
 | This resource can be transferred if the owner signs a message specifying the new owner. | This apple can be eaten if the fruitness is at least 3.  | This message can be edited by the author being encoded in the label. |
 
-## Resource Kind
+## Kind
 
 The _kind_ of a resource determines its fungibility and is computed as the hash of its _logic_ and _label_.
 

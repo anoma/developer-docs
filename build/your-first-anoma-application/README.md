@@ -11,13 +11,15 @@ description: >-
 
 Before creating your first Anoma dApp, make sure to have [Juvix installed](../../further-resources/juvix/install-juvix.md).
 
-Additionally, you can learn how [write a Juvix project](../../further-resources/juvix/write-a-juvix-project.md) to nail the very basics of coding in Juvix.
+Additionally, you can learn how to [write a Juvix project](../../further-resources/juvix/write-a-juvix-project.md) to nail the very basics of coding in Juvix.
 
-## Building the HelloWorld Application
+## Building `HelloWorld`&#x20;
 
-### Project Outline
+The goal of this tutorial is to&#x20;
 
-The goal of this application is to create 1) _an Anoma Resource_ with 2) _a `label` "HelloWorld!"_, and 3) _a 'write' function_ to initialize the resource via transaction.
+1. Define a "Hello World!" [Resource](../../learn/resources/).
+2. Add a [resource label](../../learn/resources/#label).
+3. Write a [transaction function](../../learn/applications/interface.md#transaction-functions) initializing the resource.
 
 ### Project Setup
 
@@ -33,4 +35,4 @@ juvix init
 ```
 {% endcode %}
 
-In the following chapter, we're going to construct the scaffolding of the Resource Object and add our custom label.
+In the following chapter, we're going to construct the scaffolding of the [resource object](../../learn/resources/resource-object.md) and add our custom label.

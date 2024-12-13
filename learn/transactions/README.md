@@ -14,6 +14,8 @@ Nodes send balanced transactions to a **transaction mempool**, where they can be
 
 A transaction with a non-zero **delta** value is called **unbalanced**. Unbalanced transactions are [**intents**](intents.md) and require counterparties to add consumed and created resources to the transaction to balance it.
 
+[Applications](../applications/) provide so-called [transaction functions](../applications/interface.md#transaction-functions) as part of their interface to create [transaction objects](transaction-object.md).
+
 Test your understanding about balanced transactions  by completing the exercise below.
 
 {% tabs %}

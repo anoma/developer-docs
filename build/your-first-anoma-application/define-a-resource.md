@@ -8,9 +8,9 @@ description: >-
 
 {% stepper %}
 {% step %}
-### Constructing the Resource Object
+### Defining the Resource
 
-Let's start by creating a new file that will contain our Resource Object.
+Let's start by creating a new file that will contain our resource definition.
 
 {% code title="~/HelloWorld" %}
 ```bash
@@ -18,7 +18,7 @@ touch Resource.juvix
 ```
 {% endcode %}
 
-Next, we preface our `Resource.juvix` file with the standard `module` and imports.
+Next, we preface our `Resource.juvix` file with the standard `module` and `import`statements.
 
 {% code title="Resource.juvix" %}
 ```agda
@@ -35,7 +35,7 @@ import Anoma.Builtin.System open;
 ```
 {% endcode %}
 
-We now start contructing our Resource which we call `mkHelloWorldResource` by giving it values for `logic`, `label`, `value`, `quantity`, `ephemeral`, `nonce`, `randSeed` and `nullifierKeyCommitment` .
+We now start defining our Resource which we call `mkHelloWorldResource` by giving it values for `logic`, `label`, `value`, `quantity`, `ephemeral`, `nonce`, `randSeed` and `nullifierKeyCommitment`.
 
 Let's start by putting default values for `logic` and `value` while assigning `TODO` to `label` for now.
 
@@ -112,7 +112,7 @@ These default values are artifacts of the current devnet implementation.
 {% endstep %}
 
 {% step %}
-### Add Custom HelloWorld Label
+### Add the Label
 
 Let's now add our custom label in `Resource.juvix`.&#x20;
 
@@ -191,4 +191,4 @@ mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
 {% endstep %}
 {% endstepper %}
 
-Next, we're going to build the Transaction function which will be used to initialize the Resource Object via transaction we manually prepare with our code.
+Next, we're going to build the transaction function which will be used to initialize the resource object via transaction we manually prepare with our code.
