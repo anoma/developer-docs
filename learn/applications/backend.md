@@ -6,7 +6,7 @@ description: This page explains how resources constitute the application backend
 
 Resources are not formally associated with applications. However, resources related to an application can be identified and queried by their kind (see [indexing.md](../services/indexing.md "mention")).
 
-Accordingly, consumed resources constitute **historical application state**, whereas created (i.e., unconsumed) resources constitute the **current application state**. The resource logics associated with the current application state constrain the future application state space the application can transition into via transactions.
+Accordingly, consumed resources constitute **historical application state**, whereas created (i.e., unconsumed) resources constitute the **current application state**. The resource logics associated with the current application state constrain the future application state space that the application can transition into via transactions.
 
 <figure><img src="../../.gitbook/assets/resource-model.png" alt="" width="333"><figcaption><p>Resources being created and consumed in a transaction. </p></figcaption></figure>
 
