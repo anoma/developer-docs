@@ -9,10 +9,10 @@ The **Anoma Resource Machine** (ARM) is a virtual machine being part of the Anom
 
 ## Transaction Checks&#x20;
 
-Before executing [transactions](../transactions/), the ARM conducts a number of checks. This is done by checking a number of proofs.
+Before executing a [transaction](../transactions/), the ARM ensures that the transaction is valid. This is done by checking various proofs:
 
 1. **Transaction Delta (Balance) Proof**\
-   The number of consumed and created resources of the same kind must [balance](../transactions/) in a transaction. In other words: The transaction delta must be 0.
+   The number of consumed and created resources of the same [kind](../resources/#resource-kind) must [balance](../transactions/) in a transaction. In other words: The transaction delta must have a delta value of 0.
 2. **Resource Logic Proof**\
    For each resource in the transaction, the corresponding [resource logic function](../resources/#resource-logic) must be valid. In other words: All resource logic functions must return `true`.
 3. **Compliance Proof**\
@@ -25,4 +25,4 @@ Before executing [transactions](../transactions/), the ARM conducts a number of 
    * Ephemeral resources (created and consumed)
      * existence checks are skipped
 
-The way how the proof-checking is conducted differs depending on the [information-flow control](information-flow-control.md) setting of the transaction.
+The nature of this proof-checking depends on the [information-flow control](information-flow-control.md) setting of the transaction.

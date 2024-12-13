@@ -5,11 +5,11 @@ description: This page introduces Anoma's state model.
 
 # State Model
 
-A unique feature of the Anoma protocol is its state model. Anoma organizes state in atomic units called [resources](../resources/) that can be created and consumed in [transactions](../transactions/). This **resource model** generalizes the UTXO model: Resources are generalized UTXOs having arbitrary state and predicates expressing the constraints under which they can be created and consumed.
+A unique feature of the Anoma protocol is its state model. Anoma organizes state in atomic units called [resources](../resources/) being created and consumed in [transactions](../transactions/). This **resource model** generalizes the UTXO model: Resources are UTXOs but with arbitrary state and logic predicates. The latter express the constraints under which they can be created and consumed.
 
 <figure><img src="../../.gitbook/assets/state.png" alt=""><figcaption><p>A state space containing multiple resource objects: three coins, two leafs, a gear, and a potion.</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/resource-model.png" alt=""><figcaption><p>A state transition consuming a coin and a cogwheel and creating a coin. <br>Note that an <a href="../resources/#ephemeral-resources">ephemeral</a> gear resource must be created to balance the transaction and is not shown here.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/resource-model.png" alt=""><figcaption><p>A state transition consuming a coin and a gear resource to create a coin as well as an <a href="../resources/#ephemeral-resources">ephemeral</a> gear resource, the latter of which is not being shown here.</p></figcaption></figure>
 
 ## Affordances
 

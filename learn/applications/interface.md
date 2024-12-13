@@ -27,8 +27,17 @@ Projection functions project data from the state (usually being fragmented into 
 
 Projection function examples are
 
-* A `totalBalance (ownedTokens : List Resources) : Quantity` function returning the total quantity of resources of a specific kind being owned by an owner identity.
-* A `chatHistory(messages : List Resource) : List String`  function that returns the chat messages of a message channel.
+```agda
+totalBalance (ownedTokens : List Resources) : Quantity
+```
+
+* A  `totalBalance` function returning the total quantity of resources of a specific kind being owned by an owner identity.
+
+```agda
+chatHistory(messages : List Resource) : List String
+```
+
+* A `chatHistory` function returning the message texts of a message channel.
 
 Commonly, the input resources passed to projection functions are obtained after indexing and custom-filtering, e.g., from an [indexing service provider](../services/indexing.md). &#x20;
 

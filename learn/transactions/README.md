@@ -5,9 +5,14 @@ description: This page introduces transaction transitioning the Anoma state upon
 
 # Transactions
 
-Transactions transition the Anoma state by consuming and creating resources when they are executed. Transactions with equal quantities of created and consumed resources of the same [kind](../resources/#resource-kind) are **balanced**. Furthermore, a transaction is **valid** if all resource logics functions are valid and the consumptions and creations are compliant with the [Anoma resource machine](../page/) rules.
+Transactions transition the Anoma state by consuming and creating resources when they are executed.&#x20;
 
-Only balanced and valid transactions can be executed.
+## Transaction Delta
+
+Transactions with equal quantities of created and consumed resources of the same [kind](../resources/#resource-kind) are called **balanced**. A balanced transaction has a **delta** value of 0. Furthermore, a transaction is **valid** if all resource logic and compliance proofs are valid (see the [Anoma resource machine](../page/#transaction-checks)). Only balanced and valid transactions can be executed. \
+Nodes send balanced transactions to a **transaction mempool**, where they can be picked up by a block producer that verifies and executes the transactions in the determined order, thus  updating the state.
+
+A transaction with a non-zero **delta** value is called **unbalanced**. Unbalanced transactions are [**intents**](intents.md) and require counterparties to add consumed and created resources to the transaction to balance it.
 
 Test your understanding about balanced transactions  by completing the exercise below.
 

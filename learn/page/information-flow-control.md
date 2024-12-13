@@ -23,5 +23,6 @@ The Anoma team is currently working on three resource machine instances:
 * The shielded RISC Zero resource machine (written in Rust for the RISC Zero zkVM)
 
 {% hint style="info" %}
-In the current private devnet, only the transparent resource machine instance is available.
+**Current private devnet**\
+In the current devnet, only the transparent resource machine instance is available.
 {% endhint %}

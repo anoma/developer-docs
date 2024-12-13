@@ -1,8 +1,8 @@
 ---
+icon: gear-complex
 description: >-
   This page introduces services that nodes running the Anoma protocol can
   provide each to each other and which applications and users can make use of.
-icon: gear-complex
 ---
 
 # Services
@@ -25,7 +25,7 @@ More advanced services can result from the composition of elementary services, s
 * [**Solving**](solving.md) of [intents](../transactions/intents.md) (i.e., finding the optimal composition of matching, unbalanced transactions)
 * **Validation** duties (in Proof-of-Stake protocols)
 
-Nodes providing these services are taking the role of **service providers** and will likely expect compensation from service users. Since every node in the network (i.e., your mobile phone) can participate in providing services to connected nodes permissionlessly, this enables a decentralized and mutal service economy.
+Nodes providing such services are called **service providers** and will likely expect compensation from service users. Since every node in the network (e.g., your mobile phone) can participate in providing services to connected nodes permissionlessly, this enables a decentralized and mutual service economy.
 
 {% hint style="info" %}
 **Current private devnet**\
