@@ -41,7 +41,7 @@ Besides state, resources are associated with a **logic function**. The logic fun
 
 ## Kind
 
-The _kind_ of a resource determines its fungibility and is computed as the hash of its _logic_ and _label_.
+The resource kind determines its fungibility and is computed as the hash of its _logic_ and _label_.
 
 $$
 \texttt{kind} := h_\texttt{kind}(\texttt{logic},\,\texttt{label})
@@ -92,6 +92,11 @@ $$
 $$
 
 The nullifier is then put into a [transaction](../transactions/).  After execution, the nullifier is added to a nullifier set. This nullification mechanism makes the consumption of the resource unlinkable to its past creation.
+
+{% hint style="info" %}
+**Current private devnet**\
+The current devnet supports only the [transparent ARM](../page/information-flow-control.md#resource-machine-instances) in which the nullifier key is always 0.
+{% endhint %}
 
 ### **Ephemeral Resources**
 
