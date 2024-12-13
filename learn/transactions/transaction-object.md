@@ -21,4 +21,4 @@ type Transaction :=
 * **`delta`:** The transaction delta indicating if a transaction is balanced or not.
 * **`deltaProof`:** A proof that the transaction is balanced being required in the shielded case.
 
-Further information can be found on the [Anoma specs page](https://specs.anoma.net/latest/arch/system/state/resource_machine/index.html).
+Further information can be found on [Anoma Resource Machine specs page](https://specs.anoma.net/latest/arch/system/state/resource_machine/index.html).

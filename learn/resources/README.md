@@ -7,11 +7,11 @@ description: >-
 
 # Resources
 
-Resources are **atomic units of state and logic**. In the following, we give an overview of the resource state,  resource logics, data that can be derived from resources, as well as their lifecycle in the Anoma protocol.
+Resources are **atomic units of state and logic**. In the following, we give an overview of the resource state, resource logics, data that can be derived from resources, as well as their lifecycle in the Anoma protocol.
 
 ## State
 
-Resources are associated with state, i.e., a **label**, a **quantity** and a **value**.
+Resources are associated with state, i.e., a **label**, a **quantity**, and a **value**.
 
 ### Label
 
@@ -35,9 +35,9 @@ There are more fields that are part of the resource object and make up its state
 
 Besides state, resources are associated with a **logic function**. The logic function enforces predicates checking data, e.g., in the resource itself, the transaction or resources in the same transaction context.
 
-|                                         💵 Logic                                        |                         🍏 Logic                         |  💌  Logic                                                           |
-| :-------------------------------------------------------------------------------------: | :------------------------------------------------------: | -------------------------------------------------------------------- |
-| This resource can be transferred if the owner signs a message specifying the new owner. | This apple can be eaten if the fruitness is at least 3.  | This message can be edited by the author being encoded in the label. |
+|                                         💵 Logic                                        |                          🍏 Logic                         |  💌  Logic                                                           |
+| :-------------------------------------------------------------------------------------: | :-------------------------------------------------------: | -------------------------------------------------------------------- |
+| This resource can be transferred if the owner signs a message specifying the new owner. | This apple can be eaten if the fruitiness is at least 3.  | This message can be edited by the author being encoded in the label. |
 
 ## Kind
 
@@ -47,7 +47,7 @@ $$
 \texttt{kind} := h_\texttt{kind}(\texttt{logic},\,\texttt{label})
 $$
 
-The kind is used to check if transactions are balanced (which will be explained in the [resource machine](../page/) setion) and is a requirement for a transaction to be executed.
+The kind is used to check if transactions are balanced (which will be explained in the [resource machine](../page/) section) and is a requirement for a transaction to be executed.
 
 ## Lifecycle
 
@@ -57,7 +57,7 @@ Resources have a lifecycle with three stages:
 {% step %}
 ### Non-existent
 
-A resource is non-existent when its commitment hasn't been added to the controller the resource lives on.
+A resource is non-existent when its commitment hasn't been added to the controller that the resource lives on.
 {% endstep %}
 
 {% step %}
@@ -85,7 +85,7 @@ The commitment is then put into a [transaction](../transactions/). After executi
 
 ### **Consumption**
 
-To consume a resource its _nullifier_ must be computed by hashing the resource object and a secret called the _nullifier key_.
+To consume a resource, its _nullifier_ must be computed by hashing the resource object and a secret called the _nullifier key_.
 
 $$
 \texttt{nullifier} := h_\texttt{nf}(\texttt{resource},\,\texttt{nullifierKey})
@@ -95,4 +95,4 @@ The nullifier is then put into a [transaction](../transactions/).  After executi
 
 ### **Ephemeral Resources**
 
-In some cases, it makes is required to create resources that just exists over the course of the transaction. These resources are called **ephemeral** and can be identified by a dedicated flag in the [resource object data structure](resource-object.md). This is often used to balance out transactions that otherwise would be unbalanced, for example, when resources are initially created or finally consumed. Another use case is to write advanced [intents](../transactions/intents.md) that express optionality or have more sophisticated constraints. The latter is achieved by creating an ephemeral intent resource expressing the preferred state transition and constraints that can then be matched and consumed by a solver.
+In some cases, it is required to create resources that just exist over the course of the transaction. These resources are called **ephemeral** and can be identified by a dedicated flag in the [resource object data structure](resource-object.md). This is often used to balance out transactions that otherwise would be unbalanced, for example, when resources are initially created or finally consumed. Another use case is to write advanced [intents](../transactions/intents.md) that express optionality or have more sophisticated constraints. The latter is achieved by creating an ephemeral intent resource expressing the preferred state transition and constraints that can then be matched and consumed by a solver.

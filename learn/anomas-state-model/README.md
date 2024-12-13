@@ -13,12 +13,12 @@ A unique feature of the Anoma protocol is its state model. Anoma organizes state
 
 ## Affordances
 
-Anoma's unique state model enables the following affordances to developers and users
+Anoma's unique state model enables the following affordances to developers and users:
 
 * Heterogeneous trust
   * Resources can live on different controllers (e.g., L1's, L2's, three friends in a LAN).
   * A transaction can consume a resource on controller A and create it on controller B, thus enabling fluent cross-chain transfers.
 * Information flow control
-  * Transactions can be sent transparent, shielded, or private just by setting a flag.
-* Intent-level Composability
+  * Transactions can be sent transparently, shielded, or privately just by setting a flag.
+* Intent-level composability
   * Intents (unbalanced transactions) can be composed and settled across different applications and chains
