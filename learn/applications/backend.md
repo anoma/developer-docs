@@ -14,8 +14,8 @@ Accordingly, consumed resources constitute **historical application state**, whe
 **Example: Token Logic Constraints**\
 A token resource might require authorization (usually a signed message) by its
 
-* originator when created for the first time or&#x20;
-* current owner when transferred.
+* (1) originator when created for the first time or&#x20;
+* (2) current owner when transferred.
 
 Additionally, the token can also ensure a fixed supply, which means that the total quantity of all resources of this specific kind cannot change.
 {% endhint %}

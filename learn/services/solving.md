@@ -1,5 +1,5 @@
 ---
-description: This page explains solving and counterparty
+description: This page explains solving and counterparty discovery.
 ---
 
 # Solving
@@ -10,12 +10,12 @@ In mathematical terms, solving is a **constraint satisfaction problem** (see the
 
 **Simple intents** can often be directly solved by the users themselves, i.e., by gossiping and listening to intents of connected peers and running standard solving algorithms on consumer hardware (e.g., your mobile phone). For example, swapping Pokémon or playing rock paper scissors with your friends does not require an external solver.
 
-**Advanced intents** can involve multiple parties, oracles, specific constraints. Accordingly, finding an optimal solution is much more difficult and will usually require specialized solvers.
+**Advanced intents** can involve multiple parties, oracles, and/or specific constraints. Accordingly, finding an optimal solution is much more difficult and will usually require specialized solvers.
 
-We expect the solver landscape to consist of
+We expect the solver landscape to consist of:
 
 * **Specialized solvers** focussing on specific applications.
-* G**eneral-purpose solvers** being able to match intents across applications.
+* **General-purpose solvers** being able to match intents across applications.
 
 Furthermore, we expect standardized **intent formats** to emerge that solvers can interpret easily.
 
