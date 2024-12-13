@@ -7,7 +7,7 @@ description: This page gives an overview of the different application components
 
 Applications consist of application state and logic.
 
-* **State** is modelled as resources and by the arbitrary data they contain.
+* **State** is modelled as resources and constituted by the arbitrary data they contain.
 * **Logic** is modelled as resource logic functions expressing the predicates required for a resource to be created and consumed in a transaction.
 
 Users transition application state by executing transactions on a distributed ledger. **All** **resources** related to an application **and corresponding resource logic functions** make up the [**application backend**](backend.md) and determine which application state transitions can happen.
