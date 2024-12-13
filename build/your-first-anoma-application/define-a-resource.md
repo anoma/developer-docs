@@ -12,7 +12,7 @@ description: >-
 
 Let's start by creating a new file that will contain our resource definition.
 
-{% code title="~/HelloWorld" %}
+{% code title="HelloWorld" %}
 ```bash
 touch Resource.juvix
 ```
@@ -71,9 +71,9 @@ Let's continue adding missing parameters before getting back to `label`.
 
 mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
   mkResource@{
-    label := TODO;
     logic;
-    value;
+    label := TODO;
+    value := 0; 
     quantity := 1;
     nonce := nonceToNat nonce;
     ephemeral;
@@ -110,7 +110,7 @@ label : Nat := anomaEncode "Hello World!";
 mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
   mkResource@{
     logic;
-    label; -- We removed the `:= 0` so that the label defined above is used.
+    label; -- We removed the `:= TODO` so that the label defined above is used.
     value := 0;
     quantity := 1;
     nonce := nonceToNat nonce;
