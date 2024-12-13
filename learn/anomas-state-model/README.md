@@ -5,7 +5,7 @@ description: This page introduces Anoma's state model.
 
 # State Model
 
-A unique feature of Anoma protocol is its state model, which organizes state in atomic units called of [resources](../resources/) that can be created and consumed in [transactions](../transactions/). This **resource model** generalizes the UTXO model in the sense that resources can have arbitrary state and predicates expressing the constraints under which they can be created and consumed.
+A unique feature of the Anoma protocol is its state model. Anoma organizes state in atomic units called [resources](../resources/) that can be created and consumed in [transactions](../transactions/). This **resource model** generalizes the UTXO model: Resources are generalized UTXOs having arbitrary state and predicates expressing the constraints under which they can be created and consumed.
 
 <figure><img src="../../.gitbook/assets/state.png" alt=""><figcaption><p>A state space containing multiple resource objects: three coins, two leafs, a gear, and a potion.</p></figcaption></figure>
 
@@ -13,7 +13,7 @@ A unique feature of Anoma protocol is its state model, which organizes state in 
 
 ## Affordances
 
-Anoma's unique state model enables[^1] the following affordances to developers and users
+Anoma's unique state model enables the following affordances to developers and users
 
 * Heterogeneous trust
   * Resources can live on different controllers (e.g., L1's, L2's, three friends in a LAN).
@@ -22,5 +22,3 @@ Anoma's unique state model enables[^1] the following affordances to developers a
   * Transactions can be sent transparent, shielded, or private just by setting a flag.
 * Intent-level Composability
   * Intents (unbalanced transactions) can be composed and settled across different applications and chains
-
-[^1]: https://ethresear.ch/t/rfc-draft-anoma-as-the-universal-intent-machine-for-ethereum/19109.
