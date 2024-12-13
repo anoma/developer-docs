@@ -8,9 +8,9 @@ Solving is the process of finding optimal composition of matching [intents](../t
 
 In mathematical terms, solving is a **constraint satisfaction problem** (see the [related ART report](https://zenodo.org/records/10019113)). Algorithm libraries, such as the [Google OR-Tools library](https://developers.google.com/optimization/mip) and the [SCIP](https://www.scipopt.org/) solver algorithm within, can be used to find solutions to these problems.
 
-**Simple intents** can often be directly solved by the users themselves, i.e., by gossiping and listening to intents of connected peers and running standard solving algorithms on consumer hardware (e.g., your mobile phone). For example, swapping Pokémon or playing rock paper scissors with your friends does not require an external solving service.
+**Simple intents** can often be directly solved by the users themselves, i.e., by gossiping and listening to intents of connected peers and running standard solving algorithms on consumer hardware (e.g., your mobile phone). For example, swapping Pokémon or playing rock paper scissors with your friends does not require an external solver.
 
-**Advanced intents** often involve multiple parties, oracles or include many, specific constraints or rare resources. Accordingly, finding an optimal solution is much more difficult and will usually require specialized solvers.
+**Advanced intents** can involve multiple parties, oracles, specific constraints. Accordingly, finding an optimal solution is much more difficult and will usually require specialized solvers.
 
 We expect the solver landscape to consist of
 
