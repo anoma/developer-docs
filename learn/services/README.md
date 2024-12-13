@@ -1,8 +1,8 @@
 ---
 icon: gear-complex
 description: >-
-  This page introduces services that nodes running the Anoma protocol can
-  provide each to each other and which applications and users can make use of.
+  This page introduces services that Anoma nodes can provide to each other and
+  which applications and users can make use of.
 ---
 
 # Services
