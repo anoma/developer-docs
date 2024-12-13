@@ -23,7 +23,7 @@ The goal of this tutorial is to&#x20;
 
 ### Project Setup
 
-Let's fly through the project setup by typing the following in our console / terminal. If you already have a project directory, you can skip ahead and just use `juvix init`.
+Let's fly through the project setup by typing the following in our terminal.
 
 {% code title="~/" %}
 ```bash

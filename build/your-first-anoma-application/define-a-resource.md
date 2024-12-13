@@ -1,6 +1,6 @@
 ---
 description: >-
-  In this chapter, we're writing the Resource Object and giving it a custom
+  In this chapter, we're defining a resource object and giving it a custom
   label, "Hello World!".
 ---
 
@@ -8,7 +8,7 @@ description: >-
 
 {% stepper %}
 {% step %}
-### Defining the Resource
+### Defining the Resource Object
 
 Let's start by creating a new file that will contain our resource definition.
 
@@ -18,71 +18,56 @@ touch Resource.juvix
 ```
 {% endcode %}
 
-Next, we preface our `Resource.juvix` file with the standard `module` and `import`statements.
+Next, we preface our `Resource.juvix` file with the standard `module` and `import`s.
 
-{% code title="Resource.juvix" %}
+{% code title="Resource.juvix" overflow="wrap" %}
 ```agda
--- At the start of a Juvix file, we must declare a module with the filename
--- If HelloWorld is within another Juvix project, we'd use `module HelloWorld.Resource`
+-- At the start of a Juvix file, we must declare a module with the filename.
 module Resource;
 
--- We import the standard library prelude
+-- We import the standard library prelude.
 import Stdlib.Prelude open;
 
--- We import Anoma libraries to access core functionality like `anomaEncode`
+-- We import Anoma libraries to access core functionality like `anomaEncode`.
 import Anoma open;
 import Anoma.Builtin.System open;
 ```
 {% endcode %}
 
-We now start defining our Resource which we call `mkHelloWorldResource` by giving it values for `logic`, `label`, `value`, `quantity`, `ephemeral`, `nonce`, `randSeed` and `nullifierKeyCommitment`.
+We now start defining our resource which we call `mkHelloWorldResource` by giving it values for `logic`, `label`, `value`, `quantity`, `ephemeral`, `nonce`, `randSeed` and `nullifierKeyCommitment`.
 
 Let's start by putting default values for `logic` and `value` while assigning `TODO` to `label` for now.
 
-{% code title="Resource.juvix" lineNumbers="true" %}
+{% code title="Resource.juvix" overflow="wrap" %}
 ```agda
--- ### Module and imports ###
+-- ### Module, imports ###
 
---- logic assigns a certain logic to the Resource that is checked when it's consumed
----
---- @param publicInputs takes all public inputs, i.e. commitments, nullifiers, a tag, and appData
---- @param privateInputs takes all private inputs, i.e. list of created, consumed resources and customInputs
----
---- @return object of type Boolean
-logic (publicInputs : Logic.Instance) (privateInputs : Logic.Witness) : Bool :=
-  true;
+--- A logic function always returning `true`.
+--- @param publicInputs Public inputs to the logic function (not used).
+--- @param privateInputs Private inputs to the logic function (not used).
+--- @return Whether the logic funtion is valid or not.
+logic (publicInputs : Logic.Instance) (privateInputs : Logic.Witness) : Bool := true;
 
---- value gives the Resource a programmable value
----
---- Returns a Nat
-value : Nat := 0;
-
---- mkHelloWorldResource constructs a Resource Object
----
---- @param nonce to avoid duplicate resources
---- @param ephemeral to indicate the resource's ephemerality, by default `false`
----
---- @return object of type Resource
+--- Constructs a resource object.
+--- @param nonce A nonce ensuring a unique resource commitment hash.
+--- @param ephemeral The resource's ephemerality (default: `false`).
+--- @return The constructed resource object.
 mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
   mkResource@{
-    label := TODO;
     logic;
-    value;
+    label := TODO; -- We put a TODO here for now.
+    value := 0;    -- We don't put any data in here in this example.
   };
 ```
 {% endcode %}
-
-{% hint style="info" %}
-Juvix will complain about the presence of `TODO` in the above code. You can get rid of the errors by adding `axiom TODO : {A : Type} -> A;` above the Resource Object. Keep in mind that you have to remove the `axiom` before compiling the code as it won't compile otherwise.
-{% endhint %}
 
 What's happening here is that we assign `true` to the `logic`, implying that this Resource will not have any logic constraints. Similarly, we assign zero for `value` which is an arbitrary default.
 
 Let's continue adding missing parameters before getting back to `label`.
 
-{% code title="Resource.juvix" lineNumbers="true" %}
+{% code title="Resource.juvix" overflow="wrap" %}
 ```agda
--- ### Module, imports, and logic / value helper functions ###
+-- ### Module, imports, and logic ###
 
 mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
   mkResource@{
@@ -100,11 +85,11 @@ mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
 
 In the above code, we
 
-* assign `quantity` of 1 (line 8)
-* pass function parameter `nonce`(line 9)
-* pass function parameter `ephemeral`(line 10)
-* assign default parameter 0 to `randSeed`(line 11)
-* assign default parameter 0 to `nullifierKeyCommitment`(line 12)
+* assign `quantity` of 1
+* pass function parameter `nonce`
+* pass function parameter `ephemeral`
+* assign default parameter 0 to `randSeed`
+* assign default parameter 0 to `nullifierKeyCommitment`
 
 {% hint style="warning" %}
 These default values are artifacts of the current devnet implementation.
@@ -124,9 +109,9 @@ label : Nat := anomaEncode "Hello World!";
 
 mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
   mkResource@{
-    label; -- Here we can now just add our label function from above
     logic;
-    value;
+    label; -- We removed the `:= 0` so that the label defined above is used.
+    value := 0;
     quantity := 1;
     nonce := nonceToNat nonce;
     ephemeral;
@@ -136,59 +121,52 @@ mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
 ```
 {% endcode %}
 
-At this point, our `Resource.juvix` file is complete and should look like the following.
-
-{% code title="Resource.juvix" %}
-```agda
--- At the start of a Juvix file, we must declare a module with the filename
-module HelloWorld.Resource;
-
--- We import the standard library prelude
-import Stdlib.Prelude open;
-
--- We import Anoma libraries to access core functionality like `anomaEncode`
-import Anoma open;
-import Anoma.Builtin.System open;
-
---- logic assigns a certain logic to the Resource that is checked when it's consumed
----
---- @param publicInputs takes all public inputs, i.e. commitments, nullifiers, a tag, and appData
---- @param privateInputs takes all private inputs, i.e. list of created, consumed resources and customInputs
---- 
---- @return object of type Boolean
-logic (publicInputs : Logic.Instance) (privateInputs : Logic.Witness) : Bool :=
-  true;
-
---- value gives the Resource a programmable value
----
---- Returns a Nat
-value : Nat := 0;
-
---- label takes a string and applies anomaEncode to it
----
---- @return object of type Nat
-label : Nat := anomaEncode "Hello world!";
-
---- mkHelloWorldResource constructs a Resource Object
----
---- @param nonce to avoid duplicate resources
---- @param ephemeral to indicate the resource's ephemerality, by default `false`
----
---- @return object of type Resource
-mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
-  mkResource@{
-    label;
-    logic;
-    value;
-    quantity := 1;
-    nonce := nonceToNat nonce;
-    ephemeral;
-    randSeed := 0;
-    nullifierKeyCommitment := 0;
-  };
-```
-{% endcode %}
+At this point, our `Resource.juvix` file is complete
 {% endstep %}
 {% endstepper %}
 
+<details>
+
+<summary>See the complete <code>Resource.juvix</code> file.</summary>
+
+{% code title="Resource.juvix" %}
+```agda
+module HelloWorld.Resource;
+
+import Stdlib.Prelude open;
+import Anoma open;
+import Anoma.Builtin.System open;
+
+--- A logic function always returning `true`.
+--- @param publicInputs Public inputs to the logic function (not used).
+--- @param privateInputs Private inputs to the logic function (not used).
+--- @return Whether the logic funtion is valid or not.
+logic (publicInputs : Logic.Instance) (privateInputs : Logic.Witness) : Bool :=
+  true;
+
+--- label takes a string and applies anomaEncode to it
+--- @return object of type Nat
+label : Nat := anomaEncode "Hello world!";
+
+--- Constructs a resource object.
+--- @param nonce A nonce ensuring a unique resource commitment hash.
+--- @param ephemeral The resource's ephemerality (default: `false`).
+--- @return Whether the logic funtion is valid or not.
+mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
+  mkResource@{
+    logic;
+    label;
+    value := 0;
+    quantity := 1;
+    nonce := nonceToNat nonce;
+    ephemeral;
+    randSeed := 0;
+    nullifierKeyCommitment := 0;
+  };
+```
+{% endcode %}
+
+</details>
+
 Next, we're going to build the transaction function which will be used to initialize the resource object via transaction we manually prepare with our code.
+

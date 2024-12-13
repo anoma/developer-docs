@@ -4,7 +4,7 @@ description: This chapter explains how to run your HelloWorld application locall
 
 # Run your App
 
-Amazing, we have written the code we need to compile a HelloWorld Resource Object, create a transaction to initialize our HelloWorld resource, and finally we can read its label via our projection function. Let's run through these steps by starting with the setup of the local Anoma Client and Node.
+Amazing, we have written the code we need to compile a `HelloWorld` resource object and can create a transaction to initialize our `HelloWorld` resource. Let's run through these steps by starting with the setup of the local Anoma Client and Node.
 
 ### Anoma Client and Node
 
@@ -26,7 +26,7 @@ Makefile to start Anoma Client and Anoma Node, copy in project root
 
 Open a new terminal in your project root:
 
-{% code title="~/HelloWorld" %}
+{% code title="HelloWorld" %}
 ```bash
 make run-client-and-node
 ```
@@ -36,7 +36,7 @@ make run-client-and-node
 
 Now, once the Anoma Client and Node have started in your first terminal which you will keep open, we want to call our transaction function. We do so by opening a new terminal and running the following `makefile` command:
 
-{% code title="~/HelloWorld" %}
+{% code title="HelloWorld" %}
 ```bash
 make add-transaction
 ```
