@@ -17,9 +17,23 @@ Transaction functions take arbitrary input data and output a [transaction object
 
 Transaction function examples are:
 
-* A `transfer (caller receiver : Identity) (toTransfer : Resource) : Transaction` function consuming an owned resource and creating one owned by a receiver.
-* A `merge (caller : Identity) : (toMerge : List Resource) : Transaction`  function merging a list of resources into one.
-* A `swap (caller : Identity) (give want : List Resources) : Transaction` function consuming a list of resources and specifying a list of resource kinds and quantities that the caller wants to receive in return.
+```agda
+transfer (caller receiver : Identity) (toTransfer : Resource) : Transaction
+```
+
+* A `transfer` function consuming an owned resource and creating one owned by a receiver.
+
+```agda
+merge (caller : Identity) : (toMerge : List Resource) : Transaction
+```
+
+* A `merge` function merging a list of resources into one.
+
+```agda
+swap (caller : Identity) (give want : List Resources) : Transaction
+```
+
+* A `swap` function consuming a list of resources and specifying a list of resource kinds and quantities that the caller wants to receive in return.
 
 ## Projection Functions
 
