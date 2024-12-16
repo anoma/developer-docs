@@ -120,6 +120,10 @@ main : TransactionRequest := TransactionRequest.fromTransaction tx;
 
 The completed code of our `Transaction.juvix` file should look like the following:
 
+<details>
+
+<summary>See the complete <code>Transaction.juvix</code> file.</summary>
+
 {% code title="Transaction.juvix" %}
 ```agda
 module Transaction;
@@ -176,5 +180,7 @@ tx : Transaction := initialize std;
 main : TransactionRequest := TransactionRequest.fromTransaction tx;
 ```
 {% endcode %}
+
+</details>
 
 In the following chapter, we will compile and "deploy" our code locally.

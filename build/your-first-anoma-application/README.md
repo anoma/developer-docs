@@ -37,8 +37,9 @@ juvix init
 
 In the following chapter, we're going to construct the scaffolding of the [resource object](../../learn/resources/resource-object.md) and add our custom label.
 
-Once the Juvix project is created, we want to change the Package.juvix file to the following:
+Once the Juvix project is created, we want to change the `Package.juvix` file to the following:
 
+{% code title="HelloWorld/" %}
 ```agda
 module Package;
 
@@ -59,4 +60,5 @@ package : Package :=
       ];
   };
 ```
+{% endcode %}
 

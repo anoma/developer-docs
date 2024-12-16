@@ -12,7 +12,7 @@ description: >-
 
 Let's start by creating a new file that will contain our resource definition.
 
-{% code title="HelloWorld" %}
+{% code title="HelloWorld/" %}
 ```bash
 touch Resource.juvix
 ```

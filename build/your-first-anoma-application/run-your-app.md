@@ -86,7 +86,6 @@ Open a new terminal in your project root:
 ```bash
 make run-client
 make run-node # keep this running in a separate terminal
-make add-transaction # run in a new terminal
 ```
 {% endcode %}
 
