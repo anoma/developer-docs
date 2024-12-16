@@ -39,11 +39,10 @@ Now, copy the following code into a `makefile`, again at your project root.
 # 3. make run-node # keep this running in a separate terminal
 # 4. make add-transaction
 anoma-path = <a data-footnote-ref href="#user-content-fn-1">~/Code/Anoma/devnet/anoma</a>
-base-path = Interface
 base = Transaction
 
 
-juvix = $(base-path)/$(base).juvix
+juvix = $(base).juvix
 nockma = $(base).nockma
 proved = $(base).proved.nockma
 root = $(shell pwd)
