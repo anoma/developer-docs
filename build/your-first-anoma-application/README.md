@@ -36,3 +36,27 @@ juvix init
 {% endcode %}
 
 In the following chapter, we're going to construct the scaffolding of the [resource object](../../learn/resources/resource-object.md) and add our custom label.
+
+Once the Juvix project is created, we want to change the Package.juvix file to the following:
+
+```agda
+module Package;
+
+import PackageDescription.V2 open;
+
+package : Package :=
+  defaultPackage@{
+    name := "anoma-devnet-apps";
+    main := just "Main.juvix";
+    dependencies :=
+      [
+        defaultStdlib;
+        -- path "../anoma-applib";
+          github
+          "anoma"
+          "anoma-applib"
+          "e99381ffc0258dd1eacaf6945bd05cf06c6409ea";
+      ];
+  };
+```
+

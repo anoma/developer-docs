@@ -131,7 +131,7 @@ At this point, our `Resource.juvix` file is complete
 
 {% code title="Resource.juvix" %}
 ```agda
-module HelloWorld.Resource;
+module Resource;
 
 import Stdlib.Prelude open;
 import Anoma open;
