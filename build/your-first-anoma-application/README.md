@@ -62,3 +62,6 @@ package : Package :=
 ```
 {% endcode %}
 
+{% hint style="warning" %}
+The above way of specifying the `Package.juvix` file is temporary and thus, a Work-In-Progress area which is specific to the **current stage of devnet**.
+{% endhint %}
