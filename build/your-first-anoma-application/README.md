@@ -9,9 +9,7 @@ description: >-
 
 ## Prerequisites
 
-Before creating your first Anoma dApp, make sure to have [Juvix installed](../../further-resources/juvix/install-juvix.md).
-
-Additionally, you can learn how to [write a Juvix project](../../further-resources/juvix/write-a-juvix-project.md) to nail the very basics of coding in Juvix.
+Before creating your first Anoma dApp, make sure to have [Juvix installed](../getting-started.md).
 
 ## Building `HelloWorld`&#x20;
 
