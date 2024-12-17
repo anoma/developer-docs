@@ -1,7 +1,7 @@
 ---
 description: >-
-  In this chapter, we're defining a resource object and giving it a custom
-  label, "Hello World!".
+  In this page, we're defining a resource object and giving it a custom label,
+  "Hello World!".
 ---
 
 # Define a Resource

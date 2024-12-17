@@ -1,6 +1,6 @@
 ---
 icon: screwdriver-wrench
-description: The following helps you to get started in less than 5 minutes.
+description: Install Juvix in less than 5 minutes.
 hidden: true
 ---
 

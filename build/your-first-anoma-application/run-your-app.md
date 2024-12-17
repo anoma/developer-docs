@@ -1,5 +1,5 @@
 ---
-description: This chapter explains how to run your HelloWorld application locally.
+description: This page explains how to run your application locally.
 ---
 
 # Run your App

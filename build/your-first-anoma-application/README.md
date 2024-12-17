@@ -1,7 +1,7 @@
 ---
 icon: rocket-launch
 description: >-
-  The following sets you up to build, run, and test your first Anoma
+  A tutorial setting you up to build, run, and test your first Anoma
   application.
 ---
 

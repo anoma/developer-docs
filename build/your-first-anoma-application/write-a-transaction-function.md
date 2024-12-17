@@ -1,6 +1,6 @@
 ---
 description: >-
-  This chapter walks you through writing a transaction function that initializes
+  This page walks you through writing a transaction function that initializes
   our resource object.
 ---
 
