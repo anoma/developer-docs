@@ -52,16 +52,12 @@ package : Package :=
     dependencies :=
       [
         defaultStdlib;
-        -- path "../anoma-applib";
-          github
-          "anoma"
-          "anoma-applib"
-          "e99381ffc0258dd1eacaf6945bd05cf06c6409ea";
+        github "anoma" "anoma-applib" "e99381ffc0258dd1eacaf6945bd05cf06c6409ea";
       ];
   };
 ```
 {% endcode %}
 
 {% hint style="warning" %}
-The above way of specifying the `Package.juvix` file is temporary and thus, a Work-In-Progress area which is specific to the **current stage of devnet**.
+The current `Package.juvix` file specifies the `anoma-applib` dependency by referencing a specific git commit (`e99381`). This library is work in progress and the reference will change until a stable library version is released.
 {% endhint %}
