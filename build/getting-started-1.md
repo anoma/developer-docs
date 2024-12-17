@@ -1,9 +1,10 @@
 ---
-icon: screwdriver-wrench
 description: The following helps you to get started in less than 5 minutes.
+hidden: true
+icon: screwdriver-wrench
 ---
 
-# Getting Started
+# Copy of Getting Started
 
 Juvix is Anoma's language for intent-centric and declarative decentralized applications.&#x20;
 
@@ -62,7 +63,21 @@ Next, you need to install the Juvix compiler.
 
 {% tabs %}
 {% tab title="macOS" %}
-Download and unzip the compiler executable linked below
+If you use the [Homebrew package manager,](https://brew.sh) you can use our tap:
+
+```shell
+brew update
+brew tap anoma/juvix
+brew install juvix
+```
+
+Alternatively, you can run the following in a terminal (as a non-root user):
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSfL https://get.juvix.org | sh
+```
+
+or download and unzip the compiler executable linked below&#x20;
 
 * [macOS x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-x86_64.tar.gz)
 * [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-aarch64.tar.gz)
@@ -71,7 +86,13 @@ and move it to a directory on your shell's `PATH`.
 {% endtab %}
 
 {% tab title="Linux" %}
-Download and unzip the compiler executable linked below
+To install Juvix for Linux, run the following in a terminal (as a non-root user):
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSfL https://get.juvix.org | sh
+```
+
+or download and unzip the compiler executable linked below&#x20;
 
 * [Linux x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-linux-x86_64.tar.gz)
 

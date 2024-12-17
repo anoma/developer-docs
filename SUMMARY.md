@@ -6,6 +6,7 @@
 ## Build
 
 * [Getting Started](build/getting-started.md)
+* [Copy of Getting Started](build/getting-started-1.md)
 * [Your First Anoma App](build/your-first-anoma-application/README.md)
   * [Define a Resource](build/your-first-anoma-application/define-a-resource.md)
   * [Write Projection Function](build/your-first-anoma-application/write-projection-function.md)
