@@ -9,7 +9,7 @@ The **Anoma Resource Machine** (ARM) is a virtual machine and part of the Anoma 
 
 ## Transaction Checks&#x20;
 
-Before executing a [transaction](../transactions/), the ARM ensures that the transaction is valid. This is done by checking various proofs:
+Before executing a [transaction](../transactions/), the ARM ensures it is **balanced & valid.** This is done by checking various proofs:
 
 1. **Transaction Delta (Balance) Proof**\
    The number of consumed and created resources of the same [kind](../resources/#resource-kind) must [balance](../transactions/) in a transaction. In other words - the transaction delta must have a value of 0.
