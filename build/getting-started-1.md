@@ -1,7 +1,7 @@
 ---
+icon: screwdriver-wrench
 description: The following helps you to get started in less than 5 minutes.
 hidden: true
-icon: screwdriver-wrench
 ---
 
 # Copy of Getting Started
@@ -82,7 +82,7 @@ or download and unzip the compiler executable linked below&#x20;
 * [macOS x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-x86_64.tar.gz)
 * [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-aarch64.tar.gz)
 
-and move it to a directory on your shell's `PATH`.
+and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
 
 {% tab title="Linux" %}
@@ -96,7 +96,7 @@ or download and unzip the compiler executable linked below&#x20;
 
 * [Linux x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-linux-x86_64.tar.gz)
 
-and move it to a directory on your shell's `PATH`.
+and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
 {% endtabs %}
 {% endstep %}

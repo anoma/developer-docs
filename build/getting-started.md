@@ -67,7 +67,7 @@ Download and unzip the compiler executable linked below
 * [macOS x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-x86_64.tar.gz)
 * [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-aarch64.tar.gz)
 
-and move it to a directory on your shell's `PATH`.
+and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
 
 {% tab title="Linux" %}
@@ -75,7 +75,7 @@ Download and unzip the compiler executable linked below
 
 * [Linux x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-linux-x86_64.tar.gz)
 
-and move it to a directory on your shell's `PATH`.
+and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
 {% endtabs %}
 {% endstep %}
