@@ -17,12 +17,12 @@ Before executing a [transaction](../transactions/), the ARM ensures it is **bala
    For each resource in the transaction, the corresponding [resource logic function](../resources/#resource-logic) must be valid. This means that all resource logic functions must return `true`.
 3. **Compliance Proof**\
    Ensures that the [resource lifecycle](../resources/#lifecyle) is not violated:
-   * Created resources
+   * [Created](../resources/#creation) resources
      * Commitments can not exist already
-   * Consumed resources
+   * [Consumed](../resources/#consumption) resources
      * Commitments must exist already
      * Nullifiers can not exist
-   * Ephemeral resources (created and consumed)
+   * [Ephemeral](../resources/#ephemeral-resources) resources (created and consumed)
      * Existence checks are skipped
 
 The nature of this proof-checking depends on the [information flow control](information-flow-control.md) setting of the transaction.
