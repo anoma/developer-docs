@@ -62,7 +62,15 @@ Next, you need to install the Juvix compiler.
 
 {% tabs %}
 {% tab title="macOS" %}
-Download and unzip the compiler executable linked below
+If you use the [Homebrew package manager,](https://brew.sh) you can use our tap:
+
+```shell
+brew update
+brew tap anoma/juvix
+brew install juvix-nightly
+```
+
+Alternatively, you can download and unzip the compiler executable linked below
 
 * [macOS x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-x86_64.tar.gz)
 * [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-aarch64.tar.gz)
