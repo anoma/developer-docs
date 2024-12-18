@@ -18,5 +18,5 @@ type Action :=
 
 * **`commitments`:** Computed for each created resource (see [#creation](../resources/#creation "mention")).
 * **`nullifiers`:** Computed for each consumed resource (see [#consumption](../resources/#consumption "mention")).
-* **`proof`:** Contains a logic and compliance proof for each resource referred in the `commitments` and `nullifiers` fields.
+* **`proofs`:** Contains a logic and compliance proof for each resource referred in the `commitments` and `nullifiers` fields.
 * **`appData`:** A map (encoded as a natural number) containing arbitrary, application-specific data.
