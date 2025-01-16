@@ -67,13 +67,13 @@ If you use the [Homebrew package manager,](https://brew.sh) you can use our tap:
 ```shell
 brew update
 brew tap anoma/juvix
-brew install juvix-nightly
+brew install --overwrite juvix-nightly
 ```
 
 Alternatively, you can download and unzip the compiler executable linked below
 
-* [macOS x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-x86_64.tar.gz)
-* [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix/releases/latest/download/juvix-macos-aarch64.tar.gz)
+* [macOS x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2024-12-18-0.6.8-af19142/juvix-darwin-x86_64.tar.gz)
+* [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2024-12-18-0.6.8-af19142/juvix-darwin-aarch64.tar.gz)
 
 and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
@@ -81,7 +81,7 @@ and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% tab title="Linux" %}
 Download and unzip the compiler executable linked below
 
-* [Linux x86\_64](https://github.com/anoma/juvix/releases/latest/download/juvix-linux-x86_64.tar.gz)
+* [Linux x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2024-12-18-0.6.8-af19142/juvix-linux-x86_64.tar.gz)
 
 and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
