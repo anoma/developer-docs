@@ -26,13 +26,13 @@ The Juvix compiler requires [the LLVM/clang compiler](https://llvm.org) to be av
 {% tab title="macOS" %}
 If you use the [Homebrew package manager](https://brew.sh), you can install LLVM/clang via
 
-<pre><code><strong>brew update
+<pre class="language-bash"><code class="lang-bash"><strong>brew update
 </strong>brew install llvm
 </code></pre>
 
 Alternatively, you can install the [Xcode command line tools](https://developer.apple.com/xcode/resources/)
 
-```
+```bash
 xcode-select install
 ```
 {% endtab %}
@@ -40,14 +40,14 @@ xcode-select install
 {% tab title="Linux" %}
 On **Ubuntu/Debian**, install clang via
 
-```
+```bash
 sudo apt-get update
 sudo apt install clang
 ```
 
 On **Arch Linux**, install clang via
 
-```
+```bash
 sudo pacman -Syu
 sudo pacman -S clang
 ```
@@ -64,7 +64,7 @@ Next, you need to install the Juvix compiler.
 {% tab title="macOS" %}
 If you use the [Homebrew package manager,](https://brew.sh) you can use our tap:
 
-```shell
+```sh
 brew update
 brew tap anoma/juvix
 brew install --overwrite juvix-nightly
@@ -72,8 +72,8 @@ brew install --overwrite juvix-nightly
 
 Alternatively, you can download and unzip the compiler executable linked below
 
-* [macOS x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2024-12-18-0.6.8-af19142/juvix-darwin-x86_64.tar.gz)
-* [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2024-12-18-0.6.8-af19142/juvix-darwin-aarch64.tar.gz)
+* [macOS x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-01-23-0.6.9-6ff4d88/juvix-darwin-x86_64.tar.gz)
+* [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-01-23-0.6.9-6ff4d88/juvix-darwin-aarch64.tar.gz)
 
 and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
@@ -81,7 +81,7 @@ and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% tab title="Linux" %}
 Download and unzip the compiler executable linked below
 
-* [Linux x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2024-12-18-0.6.8-af19142/juvix-linux-x86_64.tar.gz)
+* [Linux x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-01-23-0.6.9-6ff4d88/juvix-linux-x86_64.tar.gz)
 
 and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}

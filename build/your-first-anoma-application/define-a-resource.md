@@ -6,76 +6,72 @@ description: >-
 
 # Define a Resource
 
-{% stepper %}
-{% step %}
 ### Defining the Resource Object
 
 Let's start by creating a new file that will contain our resource definition.
 
-{% code title="HelloWorld/" %}
+{% code title="~/HelloWorld/" %}
 ```bash
-touch Resource.juvix
+touch HelloWorld.juvix
 ```
 {% endcode %}
 
-Next, we preface our `Resource.juvix` file with the standard `module` and `import`s.
+Next, we preface our `HelloWorld.juvix` file with the standard `module` and `import`s.
 
-{% code title="Resource.juvix" overflow="wrap" %}
+{% code title="HelloWorld.juvix" overflow="wrap" %}
 ```agda
 -- At the start of a Juvix file, we must declare a module with the filename.
-module Resource;
+module HelloWorld;
 
--- We import the standard library prelude.
+-- We import the standard library prelude as well as the Applib library.
 import Stdlib.Prelude open;
-
--- We import Anoma libraries to access core functionality like `anomaEncode`.
-import Anoma open;
-import Anoma.Builtin.System open;
+import Applib open;
 ```
 {% endcode %}
 
-We now start defining our resource which we call `mkHelloWorldResource` by giving it values for `logic`, `label`, `value`, `quantity`, `ephemeral`, `nonce`, `randSeed` and `nullifierKeyCommitment`.
+We now start defining our resource which we call `mkHelloWorldResource` by giving it values for `logic`, `label`, `value`, `quantity`, `ephemeral`, `nonce`, `randSeed` and `nullifierKeyCommitment`. You can find more detailed information on the resource and its parameters in [resources](../../learn/resources/ "mention").
 
-Let's start by putting default values for `logic` and `value` while assigning `TODO` to `label` for now.
+Let's start by putting default values for `logic` and `value` and pass the `message` parameter to `label`.
 
-{% code title="Resource.juvix" overflow="wrap" %}
+{% code title="HelloWorld.juvix" overflow="wrap" %}
 ```agda
 -- ### Module, imports ###
 
---- A logic function always returning `true`.
---- @param publicInputs Public inputs to the logic function (not used).
---- @param privateInputs Private inputs to the logic function (not used).
---- @return Whether the logic funtion is valid or not.
-logic (publicInputs : Logic.Instance) (privateInputs : Logic.Witness) : Bool := true;
+--- A logic function that is always valid.
+logic (publicInputs : Instance) (privateInputs : Witness) : Bool := true;
 
---- Constructs a resource object.
---- @param nonce A nonce ensuring a unique resource commitment hash.
---- @param ephemeral The resource's ephemerality (default: `false`).
---- @return The constructed resource object.
-mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
+--- Creates a new ;Resource; that stores a ;String; message.
+--- @param nonce A number used to ensure resource uniqueness
+--- @param message The message to store in the ;Resource;.
+mkHelloWorldResource
+  (nonce : Nat)
+  (message : String)
+  {ephemeral : Bool := false}
+  : Resource :=
   mkResource@{
+    label := builtinAnomaEncode message;
     logic;
-    label := TODO; -- We put a TODO here for now.
-    value := 0;    -- We don't put any data in here in this example.
+    value := 0;
   };
 ```
 {% endcode %}
 
-What's happening here is that we assign `true` to the `logic`, implying that this Resource will not have any logic constraints. Similarly, we assign zero for `value` which is an arbitrary default.
+In the context of our HelloWorld application, this implies that we're passing the "Hello World!"  `message` when we're creating the resource. This allows us to set any string, like "Hello Anomages!". In addition to that we assign `true` to the `logic`, implying that this resource will not have any logic constraints. Similarly, we assign zero for `value` which is an arbitrary default.
 
-Let's continue adding missing parameters before getting back to `label`.
+Let's continue adding missing parameters:
 
-{% code title="Resource.juvix" overflow="wrap" %}
+{% code title="HelloWorld.juvix" overflow="wrap" %}
 ```agda
 -- ### Module, imports, and logic ###
 
-mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
+mkHelloWorldResource
+  (nonce : Nat) (message : String) {ephemeral : Bool := false} : Resource :=
   mkResource@{
+    label := builtinAnomaEncode message;
     logic;
-    label := TODO;
-    value := 0; 
+    value := 0;
     quantity := 1;
-    nonce := nonceToNat nonce;
+    nonce;
     ephemeral;
     randSeed := 0;
     nullifierKeyCommitment := 0;
@@ -94,71 +90,35 @@ In the above code, we
 {% hint style="warning" %}
 These default values are artifacts of the current devnet implementation.
 {% endhint %}
-{% endstep %}
-
-{% step %}
-### Add the Label
-
-Let's now add our custom label in `Resource.juvix`.&#x20;
-
-{% code title="Resource.juvix" %}
-```agda
--- ### Module, imports, and logic / value helper functions ###
-
-label : Nat := anomaEncode "Hello World!";
-
-mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
-  mkResource@{
-    logic;
-    label; -- We removed the `:= TODO` so that the label defined above is used.
-    value := 0;
-    quantity := 1;
-    nonce := nonceToNat nonce;
-    ephemeral;
-    randSeed := 0;
-    nullifierKeyCommitment := 0;
-  };
-```
-{% endcode %}
-
-At this point, our `Resource.juvix` file is complete
-{% endstep %}
-{% endstepper %}
 
 <details>
 
-<summary>See the complete <code>Resource.juvix</code> file.</summary>
+<summary>See the complete <code>HelloWorld.juvix</code> file.</summary>
 
-{% code title="Resource.juvix" %}
+{% code title="HelloWorld.juvix" %}
 ```agda
-module Resource;
+module HelloWorld;
 
 import Stdlib.Prelude open;
-import Anoma open;
-import Anoma.Builtin.System open;
+import Applib open;
 
---- A logic function always returning `true`.
---- @param publicInputs Public inputs to the logic function (not used).
---- @param privateInputs Private inputs to the logic function (not used).
---- @return Whether the logic funtion is valid or not.
-logic (publicInputs : Logic.Instance) (privateInputs : Logic.Witness) : Bool :=
-  true;
+--- A logic function that is always valid.
+logic (publicInputs : Instance) (privateInputs : Witness) : Bool := true;
 
---- label takes a string and applies anomaEncode to it
---- @return object of type Nat
-label : Nat := anomaEncode "Hello world!";
-
---- Constructs a resource object.
---- @param nonce A nonce ensuring a unique resource commitment hash.
---- @param ephemeral The resource's ephemerality (default: `false`).
---- @return Whether the logic funtion is valid or not.
-mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
+--- Creates a new ;Resource; that stores a ;String; message.
+--- @param nonce A number used to ensure resource uniqueness
+--- @param message The message to store in the ;Resource;.
+mkHelloWorldResource
+  (nonce : Nat)
+  (message : String)
+  {ephemeral : Bool := false}
+  : Resource :=
   mkResource@{
+    label := builtinAnomaEncode message;
     logic;
-    label;
     value := 0;
     quantity := 1;
-    nonce := nonceToNat nonce;
+    nonce;
     ephemeral;
     randSeed := 0;
     nullifierKeyCommitment := 0;
@@ -169,4 +129,3 @@ mkHelloWorldResource (nonce : Nonce) {ephemeral : Bool := false} : Resource :=
 </details>
 
 Next, we're going to build the transaction function which will be used to initialize the resource object via transaction we manually prepare with our code.
-

@@ -28,8 +28,6 @@ Let's fly through the project setup by typing the following in our terminal.
 mkdir HelloWorld
 cd HelloWorld
 juvix init
-# (1) Next, type 'hello-world' for the project name
-# (2) Finally, press 'Enter' to choose the default version number
 ```
 {% endcode %}
 
@@ -45,17 +43,15 @@ import PackageDescription.V2 open;
 
 package : Package :=
   defaultPackage@{
-    name := "anoma-devnet-apps";
-    main := just "Main.juvix";
+    name := "hello-world";
     dependencies :=
       [
-        defaultStdlib;
-        github "anoma" "anoma-applib" "e99381ffc0258dd1eacaf6945bd05cf06c6409ea";
+        github "anoma" "juvix-stdlib" "v0.10.0";
+        github "anoma" "anoma-applib" "v0.7.1";
+        github "anoma" "juvix-mtl" "v0.1.1";
       ];
   };
 ```
 {% endcode %}
 
-{% hint style="warning" %}
-The current `Package.juvix` file specifies the `anoma-applib` dependency by referencing a specific git commit (`e99381`). This library is work in progress and the reference will change until a stable library version is released.
-{% endhint %}
+Let's start with some Juvix code. We will first define an Anoma resource.

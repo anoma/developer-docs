@@ -1,38 +1,30 @@
----
-hidden: true
----
-
-# Write Projection Function
+# Write a Projection Function
 
 Let's enrich our HelloWorld application by adding functionality that allows us to read the label we have just created.
 
-To achieve this, we add `getLabel`, which is a special type of function, a projection function. You can think of it as a read function and it lives within the interface \[<mark style="background-color:orange;">LINK TO MODEL VIEW CONTROLLER VISUAL</mark>]. Thus, we create a separate folder, "Interface", and add our new projection function file in there.
+To achieve this, we add a special type of function, a projection function. You can think of it as a read function and you can find more details about it under [interface.md](../../learn/applications/interface.md "mention").
 
-<mark style="background-color:orange;">TODO: Remove Interface folder in docs, code has been adjusted to flat structure w/o folder</mark>
+We're adding a new file to accomodate our projection function.
 
-{% code title="~/HelloWorld" %}
+{% code title="~/HelloWorld/" %}
 ```bash
-mkdir Interface
-cd Interface/
-touch Projection.juvix
+touch GetMessage.juvix
 ```
 {% endcode %}
 
-We can now specify `getLabel`. It will take a parameter of type `Resource` and then access its label via `label`. We finally retrieve the underlying `String` type by applying `anomaDecode` on the `label` of our Resource.
+We can now specify `GetMessage.juvix`. It will take an `encodedResource` parameter of type `Nat`. As the name suggests, this is an encoded resource object which we will first apply `anomaDecode` to, then access its label via `Resource.label`. We finally retrieve the underlying `String` type by applying another `anomaDecode`.
 
-{% code title="~/Projection.juvix" %}
+{% code title="GetMessage.juvix" %}
 ```agda
-module Projection;
+module GetMessage;
 
 import Stdlib.Prelude open;
-import Anoma open;
+import Applib open;
 
---- getLabel retrieves the label from a given Resource
----
---- @param resource to extract the label from
----
---- @return object of type String
-getLabel (resource : Resource) : String :=
-   anomaDecode (Resource.label resource);
+--- Extract the message from a HelloWorld ;Resource;
+main (encodedResource : Nat) : String :=
+  encodedResource |> builtinAnomaDecode |> Resource.label |> builtinAnomaDecode;
 ```
 {% endcode %}
+
+In the following chapter, we will compile and "deploy" our code locally.

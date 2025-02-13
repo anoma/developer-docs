@@ -6,11 +6,10 @@
 ## Build
 
 * [Getting Started](build/getting-started.md)
-* [Copy of Getting Started](build/getting-started-1.md)
 * [Your First Anoma App](build/your-first-anoma-application/README.md)
   * [Define a Resource](build/your-first-anoma-application/define-a-resource.md)
-  * [Write Projection Function](build/your-first-anoma-application/write-projection-function.md)
   * [Write a Transaction Function](build/your-first-anoma-application/write-a-transaction-function.md)
+  * [Write a Projection Function](build/your-first-anoma-application/write-projection-function.md)
   * [Run your App](build/your-first-anoma-application/run-your-app.md)
 * [Anoma App Examples](build/anoma-app-examples/README.md)
   * [SimpleCounter](build/anoma-app-examples/simplecounter.md)

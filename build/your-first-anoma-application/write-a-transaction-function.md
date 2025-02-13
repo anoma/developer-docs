@@ -8,179 +8,139 @@ description: >-
 
 If you've followed the[ Define a Resource](define-a-resource.md) tutorial, you will have the basic building blocks to write a [transaction function](../../learn/applications/interface.md#transaction-functions). Visit the "LEARN" section to read up on [applications](../../learn/applications/) and the different interface function types.
 
-We're creating a new file which we're calling `Transaction.juvix`. Here, we will write functions which will ultimately initialize our Resource and build the transaction necessary to create the Resource. Essentially, this is achieve in 5 consecutive steps. We first write a function `prepareTransaction` which passes back an object of type `Transaction`. We then write an `initialize` function which makes use of the prepared transaction object. Next, we construct our standard inputs and stitch together the standard inputs and initialize function as a fourth step. Finally, we create a `main` function which return a `TransactionRequest` object.
+We're adding to the `HelloWorld.juvix` file. Here, we will write two functions which will ultimately initialize our resource and build the transaction necessary to create the resource. We first write a function `mkHelloWorldTransaction` which passes back an object of type `Transaction`. We then create a `main` function which returns a `TransactionRequest` object.
 
 Alright, let's start with preparing the `Transaction` object:
 
-{% code title="~/Transaction.juvix" %}
-```agda
-module Transaction;
+<pre class="language-agda" data-title="HelloWorld.juvix" data-line-numbers><code class="lang-agda">-- ### Module and previous imports ###
 
-import Anoma open;
-import Applib open;
-import Stdlib.Prelude open;
+-- ### Helper functions and resource object ###
 
-import Anoma.State.CommitmentTree open;
-import Resource open;
-import BaseLayer.TransactionRequest open;
+--- Produces a ;Transaction; that creates a HelloWorld ;Resource;
+--- @param nonce A number used to ensure ;Resource; uniqueness.
+--- @param message The message to store in the ;Resource;
+helloWorldTransaction
+  {M : Type -> Type}
+  {{Monad M}}
+  {{Tx M}} 
+  (nonce : Nat) 
+  (label : String) 
+  : M Transaction :=
+  let
+<strong>    newResource := mkHelloWorldResource nonce label;
+</strong>  in prepareStandardTransaction@{
+       -- A Transaction must be balanced, so we consume an ephemeral resource of
+       -- the same kind as the one we're creating.
+       consumed := [newResource@Resource{ephemeral := true}];
+       created := [newResource];
+     };
+</code></pre>
 
---- Prepares a transaction object from lists of consumed and created resoruces.
---- @param consumed The resources to be consumed in this transaction.
---- @param created The resources to be created in this transaction.
---- @return The prepared transaction object.
-prepareTransaction (consumed created : List Resource) : Transaction :=
-  mkTransactionHelper@{
-    actions :=
-      [
-        mkActionHelper@{
-          consumed;
-          created;
-        };
-      ];
-  };
-```
-{% endcode %}
+Let's unpack our `helloWorldTransaction` function. First and foremost, the function is supposed to produce an object of type `Transaction`. takes two arguments, `nonce` and `label` which are passed to the function call of `mkHelloWorldResource`. This allows us to construct a function as shown in [define-a-resource.md](define-a-resource.md "mention") - we pass a `nonce` to ensure the uniqueness of our resource and the `label` to add an arbitrary message, like "Hello World!".
 
-Our `prepareTransaction` function now takes two lists of resources, one for consumed and one for created resources, and returns an object of type `Transaction`. In the process, we use the `mkTransactionHelper` which hides some complexity while we can just pass it the actions that are involved in the transaction, here just consumed and created resources.
+Now, we break new territory. In line 17, we call `prepareStandardTransaction` which is a helpful Applib function to simplify passing back the `Transaction` object. As a reminder, the `Transaction` object is what we expect in line 14 as the return type of the overall `mkHelloWorldTransaction` function.&#x20;
+
+Back to `prepareStandardTransaction` - we call this function by specifying the two arguments `consumed` and `created`. Those arguments represent two key concept that are at the core of Anoma's magic. In short, an Anoma transaction needs to be balanced, i.e. a resource must be consumed so that another resource can be created. Here, we want to create a **non-ephemeral** resource, our `newResource` resource, so we want to consume an **ephemeral** resource of the same specification, another `newResource`. You can learn more about why this is necessary under [transactions](../../learn/transactions/ "mention").
 
 {% hint style="info" %}
-The Applib library hides away some of the complexities of building Resources and Transactions using Anoma. You can still introspect what's happening by looking at the function definiton (in VSCode, use e.g. F12 to maneuver there directly).
+The Applib library hides away most of the complexities of building resources and transactions using Anoma. You can still introspect what's happening by looking at the function definiton (in VSCode, use e.g. F12 to maneuver there directly).
 {% endhint %}
 
-Next, we write the `initialize` function:
-
-{% code title="Transaction.juvix" lineNumbers="true" %}
+{% code title="HelloWorld.juvix" %}
 ```agda
---- Initializes a HelloWorld resource by consuming an ephemeral one.
---- @param standardInputs The standard inputs (caller, currentRoot, and randSeed).
---- @return The transaction object initializing a HelloWorld resource.
-initialize (standardInputs : StandardInputs) : Transaction :=
-  let
-    (nonce1, nonce2) :=
-      generateNoncePair (StandardInputs.randSeed standardInputs);
-  in prepareTransaction@{
-       consumed :=
-         [
-           mkHelloWorldResource@{
-             nonce := nonce1;
-             ephemeral := true;
-           };
-         ];
-       created :=
-         [
-           mkHelloWorldResource@{
-             nonce := nonce2;
-             ephemeral := false;
-           };
-         ];
-     };
-```
-{% endcode %}
+-- ### Previous code for modules, imports, helpers and the resource ###
 
-This function takes a parameter `standardInputs`, computes nonces using the `randSeed` of provided `standardInputs`, and then injects those nonces into the two `HelloWorld` resources which we, in turn, pass into the `prepareTransaction` function to receive back a `Transaction` object.
-
-Note, that there is a distinct difference between the consumed and create `HelloWorld` resources: The consumed resource is [ephemeral](../../learn/resources/#ephemeral-resources) (which means that it exists only over the course of the transaction). The created `HelloWorld` resource is non-ephemeral, which in this context makes sense as we want this resource to be created.
-
-This is the most complex code in this tutorial, so take your time to understand how the `HelloWorld` resource gets initialized. You can also take a look at the `mkTransactionHelper` and `mkActionHelper` to see what is happening under the hood.
-
-Let's continue with the standard inputs which we will pass into our `initialize` function in the next step.
-
-{% code title="Transaction.juvix" %}
-```agda
-std : StandardInputs :=
-  mkStandardInputs@{
+ctx : TxContext :=
+  mkTxContext@{
     caller := Universal.identity;
     currentRoot := mkRoot 0;
-    randSeed := 0;
   };
 ```
 {% endcode %}
 
-Please mind that all these values are default values. The `Universal.Indentity` is an identity generated from the 0 seed and as you can tell, both `currentRoot` and `randSeed` are 0 as well.
+This snippet of code, for now, just assigns dummy values to two important parameters. The `ctx` function takes `caller` which is an identity and `currentRoot` which is the current state root of the commitment tree. For now, it's sufficient to remember that the identity can be used to assign ownable resources and to sign messages. The commitment tree root can proof the valid existence of the resource. In this specific case, we assign `Universal.Identity` which is a universally known public key (derived from a zero address `0x0` seed / private key) and create a dummy state root from `0`.
 
-{% hint style="warning" %}
-These default values are artifacts of the current devnet implementation.
-{% endhint %}
+Now, we add the `main` function:
 
-From now, it's pretty straightforward. We pass the standard inputs which we just defined into the `initialize` function from before.
-
-{% code title="Transaction.juvix" %}
+{% code title="HelloWorld.juvix" %}
 ```agda
-tx : Transaction := initialize std;
+-- Previous code for modules, imports, helpers, 
+-- the resource, and the context
+
+--- The function that is run to produce a Transaction to send to Anoma.
+main : TransactionRequest :=
+  TransactionRequest.fromTransaction (mkHelloWorldTransaction 0 "Hello World!\n");
 ```
 {% endcode %}
 
-And now we can finish the transaction file with the `main` function which creates the resulting `TransactionRequest` object from our constructed transaction.
+The `main` function here serves a straightforward job - it creates a `TransactionRequest` object by called `TransactionRequest.fromTransaction` with the previously written `mkHelloWorldTransaction` function as well as the `nonce` and, finally, the cleartext label "Hello World!".
 
-{% code title="Transaction.juvix" %}
-```agda
-main : TransactionRequest := TransactionRequest.fromTransaction tx; 
-```
-{% endcode %}
-
-The completed code of our `Transaction.juvix` file should look like the following:
+The completed code of our `HelloWorld.juvix` file should look like the following:
 
 <details>
 
-<summary>See the complete <code>Transaction.juvix</code> file.</summary>
+<summary>See the complete <code>HelloWorld.juvix</code> file.</summary>
 
-{% code title="Transaction.juvix" %}
+{% code title="HelloWorld.juvix" %}
 ```agda
-module Transaction;
+module HelloWorld;
 
-import Anoma open;
-import Applib open;
 import Stdlib.Prelude open;
+import Applib open;
 
-import Anoma.State.CommitmentTree open;
-import Resource open;
-import BaseLayer.TransactionRequest open;
+--- A logic function that is always valid.
+logic (publicInputs : Instance) (privateInputs : Witness) : Bool := true;
 
-initialize (standardInputs : StandardInputs) : Transaction :=
+--- Creates a new ;Resource; that stores a ;String; message.
+--- @param nonce A number used to ensure resource uniqueness
+--- @param message The message to store in the ;Resource;.
+mkHelloWorldResource
+  (nonce : Nat)
+  (message : String)
+  {ephemeral : Bool := false}
+  : Resource :=
+  mkResource@{
+    label := builtinAnomaEncode message;
+    logic;
+    value := 0;
+    quantity := 1;
+    nonce;
+    ephemeral;
+    randSeed := 0;
+    nullifierKeyCommitment := 0;
+  };
+
+--- Produces a ;Transaction; that creates a HelloWorld ;Resource;
+--- @param nonce A number used to ensure ;Resource; uniqueness.
+--- @param message The message to store in the ;Resource;
+helloWorldTransaction
+  {M : Type -> Type} -- polymorphic function with type parameter M
+  {{Monad M}} -- additional information for type parameter M
+  {{Tx M}} -- random number generator needs side effects / Monad
+  (nonce : Nat) 
+  (label : String) 
+  : M Transaction :=
   let
-    (nonce1, nonce2) :=
-      generateNoncePair (StandardInputs.randSeed standardInputs);
-  in prepareTransaction@{
-       consumed :=
-         [
-           mkHelloWorldResource@{
-             nonce := nonce1;
-             ephemeral := true;
-           };
-         ];
-       created :=
-         [
-           mkHelloWorldResource@{
-             nonce := nonce2;
-             ephemeral := false;
-           };
-         ];
+    newResource := mkHelloWorldResource nonce label;
+  in prepareStandardTransaction@{
+       -- A Transaction must be balanced, so we consume an ephemeral resource of
+       -- the same kind as the one we're creating.
+       consumed := [newResource@Resource{ephemeral := true}];
+       created := [newResource];
      };
 
-prepareTransaction (consumed created : List Resource) : Transaction :=
-  mkTransactionHelper@{
-    actions :=
-      [
-        mkActionHelper@{
-          consumed;
-          created;
-        };
-      ];
-  };
-
-std : StandardInputs :=
-  mkStandardInputs@{
+ctx : TxContext :=
+  mkTxContext@{
     caller := Universal.identity;
     currentRoot := mkRoot 0;
-    randSeed := 0;
   };
 
-tx : Transaction := initialize std;
-
-main : TransactionRequest := TransactionRequest.fromTransaction tx;
+--- The function that is run to produce a Transaction to send to Anoma.
+main : TransactionRequest :=
+  buildTransactionRequest 0 ctx (helloWorldTransaction 0 "Hello World!\n");
 ```
 {% endcode %}
 
 </details>
 
-In the following chapter, we will compile and "deploy" our code locally.
+In the following chapter, we will add a projection function to access our resource label.
