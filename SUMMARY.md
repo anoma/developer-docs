@@ -29,7 +29,6 @@
   * [Transaction Object](learn/transactions/transaction-object.md)
   * [Actions](learn/transactions/actions.md)
   * [Intents](learn/transactions/intents.md)
-  * [Cross-chain Transactions](learn/transactions/cross-chain-transactions.md)
 * [Applications](learn/applications/README.md)
   * [Backend](learn/applications/backend.md)
   * [Interface](learn/applications/interface.md)
