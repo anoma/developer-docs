@@ -63,13 +63,15 @@ Please mind that the `makefile` is temporary and an **artifact of the current st
 ```makefile
 ANOMA_PATH ?= $(error set the ANOMA_PATH variable to a path to an anoma clone)
 base-path = .
-base = HelloWorld
+base = SimpleHelloWorld
 get-message = GetMessage
 
 anoma-build-dir = anoma-build
 anoma-build = $(anoma-build-dir)/.exists
 
 config = $(anoma-build-dir)/config.yaml
+
+temp-file := $(anoma-build-dir)/temp_line
 
 juvix = $(base-path)/$(base).juvix
 nockma = $(anoma-build-dir)/$(base).nockma
@@ -79,7 +81,8 @@ get-message-juvix = $(base-path)/$(get-message).juvix
 get-message-nockma = $(anoma-build-dir)/$(get-message).nockma
 get-message-proved = $(anoma-build-dir)/$(get-message).proved.nockma
 
-last-unspent-resource = $(anoma-build-dir)/last-unspent-resources
+unspent-resources = $(anoma-build-dir)/unspent-resources
+last-message-txt = $(anoma-build-dir)/last-message.txt
 
 port = $(anoma-build-dir)/port
 host = $(anoma-build-dir)/host
@@ -93,13 +96,28 @@ clean:
 	@juvix clean
 	@rm -rf $(anoma-build-dir)
 
-.PHONY: start-anoma
-start-anoma:
-	@juvix dev anoma start --anoma-dir $(ANOMA_PATH)
+.PHONY: anoma-start
+anoma-start:
+	rm -f $(config)
+ifdef ANOMA_DEBUG
+	cd $(ANOMA_PATH) && \
+		mix run --no-halt $(root)/../../start-config.exs
+else
+	juvix dev anoma start --force --anoma-dir $(ANOMA_PATH)
+endif
 
-.PHONY: stop-anoma
-stop-anoma:
-	@juvix dev anoma stop
+.PHONY: anoma-stop
+anoma-stop:
+ifdef ANOMA_DEBUG
+	@echo "ANOMA_DEBUG is incompatible with anoma-stop" && false
+else
+	juvix dev anoma stop
+endif
+
+.PHONY: $(message-file)
+$(message-file): $(anoma-build)
+	@echo $(message) \
+	> $(message-file)
 
 $(config): $(anoma-build)
 	@juvix dev anoma print-config > $(config)
@@ -108,10 +126,15 @@ $(config): $(anoma-build)
 add-transaction: $(proved) $(config)
 	@juvix dev anoma -c $(config) add-transaction $(proved)
 
-.PHONY: get-message
-get-message: $(get-message-nockma) $(config) $(last-unspent-resource)
-	@juvix dev anoma -c $(config) prove $(get-message-nockma) -o $(get-message-proved) --arg 'base64:$(last-unspent-resource)'
-	@juvix dev nockma encode --cue --from bytes --to bytes < anoma-build/GetMessage.proved.nockma
+.PHONY: get-last-message
+get-last-message: $(last-message-txt)
+	@cat $(last-message-txt)
+
+.PHONY: $(last-message-txt)
+$(last-message-txt): $(get-message-nockma) $(config) $(unspent-resources)
+	@tail -n 1 $(unspent-resources) > $(temp-file)
+	@juvix dev anoma -c $(config) prove $(get-message-nockma) -o $(get-message-proved) --arg 'base64:$(temp-file)'
+	@juvix dev nockma encode --cue --from bytes --to bytes < anoma-build/GetMessage.proved.nockma > $(last-message-txt)
 
 $(nockma): $(juvix) $(anoma-build)
 	@juvix compile anoma $(juvix) -o $(nockma)
@@ -122,9 +145,9 @@ $(proved): $(nockma) $(config)
 $(get-message-nockma): $(anoma-build) $(get-message-juvix)
 	@juvix compile anoma $(get-message-juvix) -o $(get-message-nockma)
 
-.PHONY: $(last-unspent-resource)
-$(last-unspent-resource): $(anoma-build) $(host) $(port)
-	@grpcurl -plaintext $$(cat $(host)):$$(cat $(port)) Anoma.Protobuf.IndexerService.ListUnspentResources | jq -r '.unspentResources[-1] // error("no messages exist")' > $(last-unspent-resource)
+.PHONY: $(unspent-resources)
+$(unspent-resources): $(anoma-build) $(host) $(port)
+	@grpcurl -plaintext $$(cat $(host)):$$(cat $(port)) Anoma.Protobuf.IndexerService.ListUnspentResources | jq -r '.unspentResources[-1] // error("no messages exist")' > $(unspent-resources)
 
 $(host): $(config)
 	@yq -r '.url' $(config) | tr -d '\n' > $(host)
@@ -146,7 +169,7 @@ Open a new terminal in your project root:
 
 {% code title="HelloWorld" %}
 ```bash
-make start-anoma # start the Anoma node
+make anoma-start # start the Anoma node
 ```
 {% endcode %}
 
@@ -157,9 +180,9 @@ Now, once the Anoma Client and Node have started in your first terminal which yo
 {% code title="HelloWorld" %}
 ```bash
 make add-transaction # Submit the HelloWorld transaction to anoma
-make get-message # Get the message from the latest HelloWorld Resource
+make get-last-message # Get the message from the latest HelloWorld Resource
 # ...
-make stop-anoma # stop the Anoma node when you've finished
+make anoma-stop # stop the Anoma node when you've finished
 make clean # clean up after yourself
 ```
 {% endcode %}

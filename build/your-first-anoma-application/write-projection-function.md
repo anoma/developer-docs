@@ -22,8 +22,8 @@ import Stdlib.Prelude open;
 import Applib open;
 
 --- Extract the message from a HelloWorld ;Resource;
-main (encodedResource : Nat) : String :=
-  encodedResource |> builtinAnomaDecode |> Resource.label |> builtinAnomaDecode;
+main (resource : Resource) : String :=
+  resource |> Resource.label |> builtinAnomaDecode;
 ```
 {% endcode %}
 

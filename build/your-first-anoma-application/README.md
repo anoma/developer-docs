@@ -43,12 +43,12 @@ import PackageDescription.V2 open;
 
 package : Package :=
   defaultPackage@{
-    name := "hello-world";
+    name := "simple-hello-world";
     dependencies :=
       [
-        github "anoma" "juvix-stdlib" "v0.10.0";
-        github "anoma" "anoma-applib" "v0.7.1";
-        github "anoma" "juvix-mtl" "v0.1.1";
+        github "anoma" "juvix-stdlib" "v0.10.1";
+        github "anoma" "anoma-applib" "v0.7.2";
+        github "anoma" "juvix-mtl" "v0.2.1";
       ];
   };
 ```
