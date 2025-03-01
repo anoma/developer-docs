@@ -16,7 +16,7 @@ Before executing a [transaction](../transactions/), the ARM ensures it is **bala
 2. **Resource Logic Proof**\
    For each resource in the transaction, the corresponding [resource logic function](../resources/#resource-logic) must be valid. This means that all resource logic functions must return `true`.
 3. **Compliance Proof**\
-   Ensures that the [resource lifecycle](../resources/#lifecyle) is not violated:
+   Ensures that the [resource lifecycle](../resources/#lifecycle) is not violated:
    * [Created](../resources/#creation) resources
      * Commitments can not exist already
    * [Consumed](../resources/#consumption) resources
