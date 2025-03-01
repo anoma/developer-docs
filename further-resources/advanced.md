@@ -6,4 +6,4 @@ There are several sources of information, in particular:
 * [Anoma research topics](https://art.anoma.net/)
 * [Anoma specifications](https://specs.anoma.net)
 
-Finally, please consider joining the [discourse forum](https://research.anoma.net/) ta ask questions, give feedback, and provide links to related projects, communities, and learning material.
+Finally, please consider joining the [discourse forum](https://research.anoma.net/) to ask questions, give feedback, and provide links to related projects, communities, and learning material.
