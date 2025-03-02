@@ -8,7 +8,7 @@ description: >-
 
 If you've followed the[ Define a Resource](define-a-resource.md) tutorial, you will have the basic building blocks to write a [transaction function](../../learn/applications/interface.md#transaction-functions). Visit the "LEARN" section to read up on [applications](../../learn/applications/) and the different interface function types.
 
-We're adding to the `HelloWorld.juvix` file. Here, we will write two functions which will ultimately initialize our resource and build the transaction necessary to create the resource. We first write a function `mkHelloWorldTransaction` which passes back an object of type `Transaction`. We then create a `main` function which returns a `TransactionRequest` object.
+We're adding to the `HelloWorld.juvix` file. Here, we will write two functions which will ultimately initialize our resource and build the transaction necessary to create the resource. We first write a function `helloWorldTransaction` which passes back an object of type `Transaction`. We then create a `main` function which returns a `TransactionRequest` object.
 
 Alright, let's start with preparing the `Transaction` object:
 
@@ -69,11 +69,11 @@ Now, we add the `main` function:
 
 --- The function that is run to produce a Transaction to send to Anoma.
 main : TransactionRequest :=
-  TransactionRequest.fromTransaction (mkHelloWorldTransaction 0 "Hello World!\n");
+  TransactionRequest.fromTransaction (helloWorldTransaction 0 "Hello World!\n");
 ```
 {% endcode %}
 
-The `main` function here serves a straightforward job - it creates a `TransactionRequest` object by called `TransactionRequest.fromTransaction` with the previously written `mkHelloWorldTransaction` function as well as the `nonce` and, finally, the cleartext label "Hello World!".
+The `main` function here serves a straightforward job - it creates a `TransactionRequest` object by called `TransactionRequest.fromTransaction` with the previously written `helloWorldTransaction` function as well as the `nonce` and, finally, the cleartext label "Hello World!".
 
 The completed code of our `HelloWorld.juvix` file should look like the following:
 
