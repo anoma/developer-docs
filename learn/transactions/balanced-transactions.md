@@ -6,7 +6,7 @@ description: >-
 
 # Balanced Transactions
 
-Like conventional blockchain transactions, **balanced transactions** on Anoma require no counterparty and can be directly executed.
+Balanced transactions are characterized by a zero [transaction delta](delta.md). They can be executed if they are valid and comply with the [resource machine rules](../page/). One way of obtaining balanced transactions  is through composition of matching, [unbalanced transactions a.k.a. as intents](intents.md). However, a single party can often directly produce a balanced transaction without requiring any counterparty.
 
 In the following, we show examples of transactions that can be sent by a single party, here Alice.
 

@@ -4,9 +4,9 @@ description: This page explains how intents and solving works within the Anoma p
 
 # Intents
 
-**Intents**, which **are unbalanced transactions**, can be become balanced transactions through composition with matching intents by other counterparties.
+**Intents**, which are **unbalanced transactions**, can be become balanced transactions through composition with matching intents by other counterparties.
 
-Anoma users submit their intents to an **intent pool** in the form of unbalanced transactions, which are received and processed by [solvers](../services/solving.md) that output balanced ARM transactions. These transactions are then ordered and finally sent to the executor node, which verifies and executes the transactions in the determined order, updating the state.
+Anoma users submit their intents to an **intent pool** in the form of unbalanced transactions, which are received and processed by [solvers](../services/solving.md) that output [balanced transactions](balanced-transactions.md). These transactions are then ordered and finally sent to the executor node, which verifies and executes the transactions in the determined order, updating the state.
 
 Below, we show examples of a balanced transaction that can directly be executed and two flavors of  intents (unbalanced transactions) requiring counterparty discovery.
 
