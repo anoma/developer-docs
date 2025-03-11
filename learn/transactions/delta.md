@@ -1,10 +1,10 @@
 ---
-description: This page explains how the concept of the transaction balance.
+description: This page explains the concept of the transaction balance.
 ---
 
 # Delta
 
-The transaction **delta** value is computed by adding and subtracting the quantities of created and consumed resources of the same kind, respectively.
+The transaction **delta** value, also referred to as the transaction balance, is computed by adding and subtracting the quantities of created and consumed resources of the same kind, respectively.
 
 Transactions with a zero delta value are [**balanced transactions**](balanced-transactions.md).\
 Transactions with a **non-zero delta** value are **unbalanced transactions** a.k.a. [**intents**](intents.md).&#x20;

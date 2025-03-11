@@ -1,7 +1,5 @@
 ---
-description: >-
-  This page explains how transactions can be sent by a single party in the Anoma
-  protocol.
+description: This page explains balanced transactions and how they can be formed.
 ---
 
 # Balanced Transactions
