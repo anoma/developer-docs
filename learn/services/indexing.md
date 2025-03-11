@@ -4,7 +4,7 @@ description: This page explains indexing services.
 
 # Indexing
 
-Since only the commitments and nullifiers of created and consumed resources are stored on a distributed ledger (see [#creation](../resources/#creation "mention") and [#consumption](../resources/#consumption "mention")) and not the [resource object](../resources/resource-object.md) itself, a node wanting to know about current global blockchain state must
+Since only the commitments and nullifiers of created and consumed resources are stored on a distributed ledger (see [#creation](../resources/#creation "mention") and [#consumption](../resources/#consumption "mention")) and not the [resource object](broken-reference) itself, a node wanting to know about current global blockchain state must
 
 * (1) be online all the time,
 * (2) observe all transactions that occur, and&#x20;

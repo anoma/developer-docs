@@ -1,8 +1,8 @@
 ---
-icon: gear-complex
 description: >-
   This page introduces services that Anoma nodes can provide to each other and
   which applications and users can make use of.
+icon: gear-complex
 ---
 
 # Services
@@ -29,5 +29,5 @@ Nodes providing such services are called **service providers** and will likely e
 
 {% hint style="info" %}
 **Current private devnet**\
-Basic indexing and solving services are provided by a central Anoma node. In the future, these services will be provided by different peer-to-peer nodes participating in the Anoma network.
+Basic indexing and solving services are provided by a central Anoma node. In the future, these services will be integrated into the protocol and provided by different peer-to-peer nodes participating in the Anoma network.
 {% endhint %}

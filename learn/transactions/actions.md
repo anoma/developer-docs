@@ -1,22 +1,12 @@
 ---
-description: This page describes the structure of the action object in detail.
+description: This page describes the Action object and its purpose.
 ---
 
 # Actions
 
-Actions are part of the [transaction data structure](transaction-object.md) and separate the transaction into distinct contexts. Resource logics of created and consumed resources can only see and relate to other resources if they are part of the same action. This **context separation** is important to compose transactions with each other without causing interferences.
+Actions separate the transaction, i.e., consumed and created resources and related data, into distinct contexts. For example, one action can transfer coins from Alice to Bob, whereas another one transfers coins from Carol to Dave.&#x20;
 
-```agda
-type Action :=
-  mkAction@{
-    commitments : List Nat;
-    nullifiers : List Nat;
-    proofs : List Proof;
-    appData : Nat;
-  };
-```
+Resource logics of created and consumed resources can only see and relate to other resources if they are part of the same action. This **context separation** is important to compose transactions with each other without causing interferences.&#x20;
 
-* **`commitments`:** Computed for each created resource (see [#creation](../resources/#creation "mention")).
-* **`nullifiers`:** Computed for each consumed resource (see [#consumption](../resources/#consumption "mention")).
-* **`proofs`:** Contains a logic and compliance proof for each resource referred in the `commitments` and `nullifiers` fields.
-* **`appData`:** A map (encoded as a natural number) containing arbitrary, application-specific data.
+More details can be found in the [Anoma specs](https://specs.anoma.net/latest/arch/system/state/resource_machine/data_structures/transaction/transaction.html).
+

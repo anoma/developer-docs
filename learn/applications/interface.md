@@ -13,7 +13,7 @@ The application interface consists of two components:
 
 ## Transaction Functions&#x20;
 
-Transaction functions take arbitrary input data and output a [transaction object](../transactions/transaction-object.md). Besides populating the transaction object with the required data[^1], they also take care of checking the input arguments for correctness and can return error messages.
+Transaction functions take arbitrary input data and output a [transaction object](broken-reference). Besides populating the transaction object with the required data[^1], they also take care of checking the input arguments for correctness and can return error messages.
 
 Transaction function examples are:
 

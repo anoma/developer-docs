@@ -1,38 +1,32 @@
 ---
+description: This page introduces transactions transitioning state upon execution.
 icon: arrow-right-arrow-left
-description: >-
-  This page introduces transactions transitioning the Anoma state upon
-  execution.
 ---
 
 # Transactions
 
-Transactions transition the Anoma state by consuming and creating resources when they are executed.&#x20;
+A transaction transitions state by consuming and creating resources on execution. This requires the transaction to be **balanced** (i.e., have a [delta value](delta.md) of zero) **&** **valid** (i.e., all [resource logics](../resources/logic.md) must be valid and resources must be [resource machine compliant](../page/)).
 
-## Transaction Delta
+[**Balanced transactions**](balanced-transactions.md) are sent to a **transaction mempool**, where they can be picked up by a block producer that verifies and executes them in a determined order, thus updating the state. **Unbalanced transactions** a.k.a. [**intents**](intents.md) are sent to an **intent mempool** to be processed by [solvers](../services/solving.md). Solvers compose unbalanced transactions to produce balanced transactions.
 
-Transactions with equal quantities of created and consumed resources of the same [kind](../resources/#resource-kind) are called **balanced**. A balanced transaction has a **delta** value of 0. Furthermore, a transaction is **valid** if all resource logic and compliance proofs are valid (see the [Anoma resource machine](../page/#transaction-checks)). Only transactions which are both balanced and valid can be executed.
+```mermaid
+flowchart LR
+  user(("User"))
+  app(App)
+  solver(("Solver"))
+  executor(("Block<br>Producer"))
+  utx("Unbalanced<br>Transaction")
+  btx("Balanced<br>Transaction")
+  txpool@{shape: lin-cyl, label: "Transaction <br>Mempool"}
+  ipool@{shape: lin-cyl, label: "Intent<br>Mempool"}
+  block("Block<br>")
 
-Nodes send balanced transactions to a **transaction mempool**, where they can be picked up by a block producer that verifies and executes the transactions in the determined order, thus updating the state.
+  user --> app
+  app --> btx
+  app --> utx --> ipool --> solver --> btx
+  btx --> txpool --> executor --> block
+```
 
-A transaction with a non-zero **delta** value is called **unbalanced**. Unbalanced transactions are [**intents**](intents.md) and require counterparties to add consumed and created resources to the transaction to balance it.
+[Applications](../applications/) provide so-called [transaction functions](../applications/interface.md#transaction-functions) as part of their interface producing balanced or unbalanced transactions, a.k.a. [intents](intents.md).
 
-[Applications](../applications/) provide so-called [transaction functions](../applications/interface.md#transaction-functions) as part of their interface to create [transaction objects](transaction-object.md).
-
-Test your understanding about balanced transactions  by completing the exercise below.
-
-{% tabs %}
-{% tab title="Exercise" %}
-**Is the transaction balanced? Answer for each row.**
-
-<table><thead><tr><th align="center">Consumed</th><th align="center">Created</th><th data-type="checkbox">Answer</th></tr></thead><tbody><tr><td align="center">2🍏</td><td align="center">2🍏</td><td>false</td></tr><tr><td align="center">2🍏</td><td align="center">1🍏 + 1🍏</td><td>false</td></tr><tr><td align="center">1🍏</td><td align="center">1🐚</td><td>false</td></tr><tr><td align="center">2🍏 + 1🐚</td><td align="center">1🍏 + 2🐚</td><td>false</td></tr><tr><td align="center">2🍏 + 1🐚</td><td align="center">1🍏 + 1🍎 + 1🐚</td><td>false</td></tr><tr><td align="center">1🍏 + 2🍎 + 2🍎 + 3🐚</td><td align="center">1🍏 + 4🍎 + 1🐚 + 2🐚</td><td>false</td></tr></tbody></table>
-{% endtab %}
-
-{% tab title="Solution" %}
-**Is the transaction balanced? Answer for each row.**
-
-<table><thead><tr><th align="center">Consumed</th><th align="center">Created</th><th data-type="checkbox">Answer</th></tr></thead><tbody><tr><td align="center">2🍏</td><td align="center">2🍏</td><td>true</td></tr><tr><td align="center">2🍏</td><td align="center">1🍏 + 1🍏</td><td>true</td></tr><tr><td align="center">1🍏</td><td align="center">1🐚</td><td>false</td></tr><tr><td align="center">2🍏 + 1🐚</td><td align="center">1🍏 + 2🐚</td><td>false</td></tr><tr><td align="center">2🍏 + 1🐚</td><td align="center">1🍏 + 1🍎 + 1🐚</td><td>false</td></tr><tr><td align="center">1🍏 + 2🍎 + 2🍎 + 3🐚</td><td align="center">1🍏 + 4🍎 + 1🐚 + 2🐚</td><td>true</td></tr></tbody></table>
-{% endtab %}
-{% endtabs %}
-
-Next, we will look at the transaction object data structure in detail.
+The transaction object contains standardized data fields, which can be found in the [Anoma specs](https://specs.anoma.net/latest/arch/system/state/resource_machine/data_structures/action/index.html). &#x20;

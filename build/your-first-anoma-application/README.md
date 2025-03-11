@@ -1,8 +1,8 @@
 ---
-icon: rocket-launch
 description: >-
   A tutorial setting you up to build, run, and test your first Anoma
   application.
+icon: rocket-launch
 ---
 
 # Your First Anoma App
@@ -31,7 +31,7 @@ juvix init
 ```
 {% endcode %}
 
-In the following chapter, we're going to construct the scaffolding of the [resource object](../../learn/resources/resource-object.md) and add our custom label.
+In the following chapter, we're going to construct the scaffolding of the [resource object](broken-reference) and add our custom label.
 
 Once the Juvix project is created, we want to change the `Package.juvix` file to the following:
 

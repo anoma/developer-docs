@@ -11,7 +11,7 @@ The following outlines the basics of the SimpleCounter example application. The 
 
 ## Prerequisites
 
-Before creating the SimpleCounter application, make sure to have [Juvix installed](../../further-resources/juvix/install-juvix.md). Also consider looking at [Your First Anoma dApp](../your-first-anoma-application/) for some introductory explanations.
+Before creating the SimpleCounter application, make sure to have [Juvix installed](broken-reference). Also consider looking at [Your First Anoma dApp](../your-first-anoma-application/) for some introductory explanations.
 
 ## Let's write some SimpleCounter code
 

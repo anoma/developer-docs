@@ -1,19 +1,4 @@
----
-description: This page describes the structure of the resource object in detail.
-layout:
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
-# Resource Object
+# Resource
 
 The resource object is a data structure that contains multiple fields.
 

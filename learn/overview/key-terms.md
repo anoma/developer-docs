@@ -28,6 +28,8 @@ hidden: true
 * **Solving:** TODO
 * **intent gossip network:** TODO
 * **Intent pool:** TODO
+* **Intent transaction:** synonym for unbalanced transaction
+* **Intent resource**: TODO
 * **Mempool:** TODO
 * **BLOBs:** TODO
 * **BLOB Storage:** TODO
