@@ -11,7 +11,7 @@ In the following, we show examples of transactions that can be sent by a single 
 {% hint style="info" %}
 **Legend**
 
-* Symbols, e.g., <kbd>🍏</kbd> , indicate resource objects that can contain arbitrary data and logic.
+* Symbols, e.g., <kbd>🍏</kbd> , indicate resource objects of specific kind that can contain arbitrary data and logic.
 * Numbers Preceeding numbers, e.g., <kbd>4🍏</kbd> indicate the quantity of resources.
 * Names following a resource, e.g., <kbd>4🍏 Alice</kbd> , indicate who is authorized to consume.
 * <kbd><mark style="color:blue;">Blue<mark style="color:blue;"></kbd>  coloring indicates ephemeral resources.
@@ -32,7 +32,7 @@ Alice owns an apple resource <kbd>🍏</kbd> and wants to transfer it to Bob.
 
 #### **Alice's balanced transaction**
 
-Alice consumes her <kbd>3🍏 Alice</kbd> resource and creates a <kbd>3🍏 Bob</kbd> resource with Bob as the owner.
+Alice consumes her <kbd>3🍏 Alice</kbd> resource and creates a <kbd>3🍏 Bob</kbd> resource for Bob.
 
 | Consume              | Create             |
 | -------------------- | ------------------ |
@@ -42,7 +42,7 @@ After execution, Alice has transferred <kbd>3🍏</kbd> to Bob but the total qua
 {% endtab %}
 
 {% tab title="Split" %}
-Alice owns an <kbd>3🍏</kbd> apple resource and wants to split it into a <kbd>2🍏</kbd> and a <kbd>1🍏</kbd> resource.
+Alice owns an <kbd>3🍏</kbd> resource and wants to split it into a <kbd>2🍏</kbd> and a <kbd>1🍏</kbd> resource.
 
 #### **Alice's balanced transaction**
 
@@ -61,35 +61,35 @@ Alice owns a <kbd>2🍏</kbd> and a <kbd>1🍏</kbd> resource and wants to merge
 
 #### **Alice's balanced transaction**
 
-Alice consumes her <kbd>3🍏 Alice</kbd> resource and creates a <kbd>2🍏 Alice</kbd> and a  <kbd>1🍏 Alice</kbd> resource for herself.
+Alice consumes her  <kbd>2🍏 Alice</kbd> and  <kbd>1🍏 Alice</kbd> resources and creates a <kbd>3🍏 Alice</kbd> resource for herself.
 
 | Consume              | Create               |
 | -------------------- | -------------------- |
 | <kbd>2🍏 Alice</kbd> | <kbd>3🍏 Alice</kbd> |
 | <kbd>1🍏 Alice</kbd> |                      |
 
-After execution,  Alice has one resource object instead of two, but the total quantity hasn't changed.
+After execution,  Alice has one resource instead of two, but the total quantity hasn't changed.
 {% endtab %}
 {% endtabs %}
 
 ## Resource Supply Changes
 
-Changing resource properties requires resource to exist in the first place. However, immediately after the genesis of a resource controller (e.g., the launch of a new blockchain or the deployment of a protocol adapter) the associated commitment tree is empty. The question is how resources can initially created but also finally consumed.
+Changing resource properties requires resource to exist in the first place. However, immediately after the genesis of a resource controller (e.g., the launch of a new blockchain or the deployment of a protocol adapter) the associated commitment tree is empty. The question is how resources can be initially created but also finally consumed.
 
 We call the process of initially creating a resource out of nothing **initialization**, and the process of finally consuming a resource **finalization**.\
-The former and latter result in **in- and deflation of the supply** (i.e.,  the total quantity) of the associated resource kind, respectively. Both require utilizing [ephemeral resources](../resources/#ephemeral-resources) to balance the transaction.
+The former and latter result ii **in- and deflation of the supply** (i.e.,  the total quantity) of the associated resource kind, respectively. Both require utilizing [ephemeral resources](../resources/#ephemeral-resources) to balance the transaction.
 
 {% hint style="info" %}
 **Constraining the Supply**
 
-Resources logics can include constraints and mechanisms fixing the **supply** (i.e., the total quantity of all resources) of a given resource kind after initialization or allowing only a specific **originator** identity to in- or deflate the supply.
+Resource logics can include constraints and mechanisms fixing the **supply** (i.e., the total quantity of all resources) of a given resource kind after initialization or allowing only a specific **originator** identity to in- or deflate the supply.
 {% endhint %}
 
 ### Examples
 
 {% tabs %}
 {% tab title="Initialization" %}
-Alice wants to initiallly create an apple resource (without consuming an existing one) and inflate the total <kbd>🍏</kbd> supply by 3. To balance the transaction she uses an [ephemeral resource](../resources/#ephemeral-resources).
+Alice wants to initiallly create an apple resource (without consuming an existing one) and inflate the total <kbd>🍏</kbd> supply by 3. To balance the transaction she uses an [ephemeral resource](../resources/lifecycle.md#ephemeral-resources).
 
 #### **Alice's balanced transaction**
 
@@ -99,11 +99,11 @@ Alice consumes an ephemeral <kbd><mark style="color:blue;">3🍏 Alice<mark st
 | ------------------------------------------------------------------------ | -------------------- |
 | <kbd><mark style="color:blue;">3🍏 Alice<mark style="color:blue;"></kbd> | <kbd>3🍏 Alice</kbd> |
 
-After execution, Alice has created <kbd>3🍏</kbd> resources for herself.
+After execution, Alice has created a new <kbd>3🍏</kbd> resource for herself and inflated the total supply by 3.
 {% endtab %}
 
 {% tab title="Finalization" %}
-Alice wants to finally consume an apple resource <kbd>🍏</kbd> (without creating a new one) to deflate the total <kbd>🍏</kbd> supply. To balance the transaction she uses an [ephemeral resource](../resources/#ephemeral-resources).
+Alice wants to finally consume a <kbd>3🍏</kbd> resource (without creating a new one) to deflate the total <kbd>🍏</kbd> supply by 3. To balance the transaction she uses an [ephemeral resource](../resources/lifecycle.md#ephemeral-resources).
 
 #### **Alice's balanced transaction**
 
@@ -113,7 +113,7 @@ Alice consumes a non-ephemeral <kbd>3🍏 Alice</kbd> resource and creates an 
 | -------------------- | ------------------------------------------------------------------------ |
 | <kbd>3🍏 Alice</kbd> | <kbd><mark style="color:blue;">3🍏 Alice<mark style="color:blue;"></kbd> |
 
-This transaction is already balanced and therefore requires no solving. It can be executed straight away. After execution, Alice has consumed <kbd>3🍏</kbd> resources for herself.
+After execution, Alice has finally consumed her <kbd>3🍏</kbd> resource and deflated the supply by 3.
 {% endtab %}
 {% endtabs %}
 

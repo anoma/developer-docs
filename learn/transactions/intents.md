@@ -13,7 +13,7 @@ Below, we show examples of a balanced transaction that can directly be executed 
 {% hint style="info" %}
 **Legend**
 
-* Symbols, e.g., <kbd>🍏</kbd> , indicate resource objects that can contain arbitrary data and logic.
+* Symbols, e.g., <kbd>🍏</kbd> , indicate resource objects of specific kind that can contain arbitrary data and logic.
 * Numbers Preceeding numbers, e.g., <kbd>4🍏</kbd> indicate the quantity of resources.
 * Names following a resource, e.g., <kbd>4🍏 Alice</kbd> , indicate who is authorized to consume it.
 * <kbd><mark style="color:blue;">Blue<mark style="color:blue;"></kbd> coloring indicates ephemeral resources.&#x20;
@@ -24,17 +24,17 @@ Below, we show examples of a balanced transaction that can directly be executed 
 {% tab title="Basic Intent" %}
 Alice owns apple <kbd>🍏</kbd> and Bob owns banana <kbd>🍌</kbd> resources. Both want to trade their fruits and know exactly what they want. Both don't need to know each other.
 
-#### Alice's unbalanced txn (intent)
+#### Alice's intent
 
-"I want to give 3🍏 for 2🍌."
+"I want to give <kbd>3🍏</kbd> for <kbd>2🍌</kbd>."
 
 | Consume              | Create               |
 | -------------------- | -------------------- |
 | <kbd>3🍏 Alice</kbd> | <kbd>2🍌 Alice</kbd> |
 
-#### Bob's unbalanced txn (intent)
+#### Bob's intent
 
-"I want to give 2🍌 for 3🍏."
+"I want to give <kbd>2🍌</kbd> for <kbd>3🍏</kbd>."
 
 | Consume            | Create             |
 | ------------------ | ------------------ |
@@ -68,29 +68,29 @@ Alice owns apple <kbd>🍏</kbd> and Bob owns banana <kbd>🍌</kbd> resources. 
 
 Both, Alice and Bob express their intents over the preferred state transition as ephemeral intent resources <kbd>💬</kbd> to solver Sally.
 
-#### Alice's unbalanced txn (intent)
+#### Alice's Intent
 
-"Sally, I want to give exactly 4🍏 for at least 4🍌."
+"Sally, I want to give exactly <kbd>4🍏</kbd> for at least <kbd>4🍌</kbd>."
 
 <table data-full-width="true"><thead><tr><th>Consume</th><th>Create</th></tr></thead><tbody><tr><td><kbd>4🍏 Alice</kbd></td><td><kbd><mark style="color:blue;">1💬 Sally, give = 4🍏 Alice, want ≥ 4🍌 Alice</mark></kbd></td></tr></tbody></table>
 
-#### Bob's unbalanced txn (intent)
+#### Bob's Intent
 
-"Sally, I want to give at most 7🍌 for exactly 3🍏."
+"Sally, I want to give at most <kbd>7🍌</kbd> for exactly <kbd>3🍏</kbd>."
 
 <table data-full-width="true"><thead><tr><th>Consume</th><th>Create</th></tr></thead><tbody><tr><td><kbd>7🍌 Bob</kbd></td><td><kbd><mark style="color:blue;">1💬 Sally, give ≤ 7🍌 Bob, want = 3🍏 Bob</mark></kbd></td></tr></tbody></table>
 
-#### Solver Sally's unbalanced txn (solution)
+#### &#x20;Sally's Solving Intent
 
 Seeing both intents in the intent pool, Sally comes up with a solution for the two intents:
 
-"I'll to give 3🍏 to Bob and take 1🍏 for myself as a fee. Furthermore, I'll give 5🍌 to Alice, return 1🍌 to Bob, and  take 1🍌 for myself as a fee."
+"I'll give <kbd>3🍏</kbd> to Bob and take <kbd>1🍏</kbd> for myself as a fee. Furthermore, I'll give <kbd>5🍌</kbd> to Alice, return <kbd>1🍌</kbd> to Bob, and take <kbd>1🍌</kbd> for myself as a fee."
 
 <table data-full-width="true"><thead><tr><th width="351">Consume</th><th>Create</th></tr></thead><tbody><tr><td><kbd><mark style="color:blue;">1💬 Sally, give = 4🍏 Alice, want ≥ 4🍌 Alice</mark></kbd></td><td><kbd>3🍏 Bob</kbd></td></tr><tr><td><kbd><mark style="color:blue;">1💬 Sally, give ≤ 7🍌 Bob, want = 3🍏 Bob</mark></kbd></td><td><kbd>1🍏 Sally</kbd></td></tr><tr><td></td><td><kbd>5🍌 Alice</kbd></td></tr><tr><td></td><td><kbd>1🍌 Bob</kbd></td></tr><tr><td></td><td><kbd>1🍌 Sally</kbd></td></tr></tbody></table>
 
-#### Balanced txn (composition of Alice's, Bob's, and Sally's unbalanced txns)
+#### Balanced Transaction (composition of Alice's, Bob's, and Sally's intents)
 
-Sally composes her solution with Alice's and Bob's intents and obtains a balanced transaction containing three actions.
+Sally composes her solution intent with Alice's and Bob's intents and obtains a balanced transaction containing three actions.
 
 <table data-full-width="true"><thead><tr><th>Consume</th><th>Create</th></tr></thead><tbody><tr><td><kbd>4🍏 Alice</kbd></td><td><kbd><mark style="color:blue;">1💬 Sally, give = 4🍏 Alice, want ≥ 4🍌 Alice</mark></kbd></td></tr></tbody></table>
 
@@ -111,7 +111,7 @@ Sally composes her solution with Alice's and Bob's intents and obtains a balance
 After execution,
 
 * Alice gave her <kbd>4🍏</kbd>  and got <kbd>5🍌</kbd> , more than the least amount she specified,
-* Bob gave <kbd>6🍌</kbd> and has <kbd>1🍌</kbd>left, less than max amount he specified, and got the <kbd>3🍏</kbd>  apples he wanted,
+* Bob gave <kbd>6🍌</kbd> and has <kbd>1🍌</kbd> left, less than the maximal amount he specified, and got the <kbd>3🍏</kbd>  apples he wanted,
 * Sally took <kbd>1🍏</kbd> and <kbd>1🍌</kbd> for her services. If she is taking too much for herself, users might decide to not let her settle their intents anymore (see the [Slow Games ART](https://zenodo.org/records/13765214)).
 {% endtab %}
 {% endtabs %}
