@@ -31,7 +31,7 @@ juvix init
 ```
 {% endcode %}
 
-In the following chapter, we're going to construct the scaffolding of the [resource object](broken-reference) and add our custom label.
+In the following chapter, we're going to construct the scaffolding of the [resource object](https://specs.anoma.net/latest/arch/system/state/resource_machine/data_structures/resource/index.html) and add our custom label.
 
 Once the Juvix project is created, we want to change the `Package.juvix` file to the following:
 
