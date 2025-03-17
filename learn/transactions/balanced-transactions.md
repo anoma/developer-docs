@@ -77,12 +77,12 @@ After execution,  Alice has one resource instead of two, but the total quantity 
 Changing resource properties requires resource to exist in the first place. However, immediately after the genesis of a resource controller (e.g., the launch of a new blockchain or the deployment of a protocol adapter) the associated commitment tree is empty. The question is how resources can be initially created but also finally consumed.
 
 We call the process of initially creating a resource out of nothing **initialization**, and the process of finally consuming a resource **finalization**.\
-The former and latter result ii **in- and deflation of the supply** (i.e.,  the total quantity) of the associated resource kind, respectively. Both require utilizing [ephemeral resources](../resources/lifecycle.md#ephemeral-resources) to balance the transaction.
+The former and latter result in **inflation and deflation of the supply** (i.e.,  the total quantity) of the associated resource kind, respectively. Both require utilizing [ephemeral resources](../resources/lifecycle.md#ephemeral-resources) to balance the transaction.
 
 {% hint style="info" %}
 **Constraining the Supply**
 
-Resource logics can include constraints and mechanisms fixing the **supply** (i.e., the total quantity of all resources) of a given resource kind after initialization or allowing only a specific **originator** identity to in- or deflate the supply.
+Resource logics can include constraints and mechanisms fixing the **supply** (i.e., the total quantity of all resources) of a given resource kind after initialization or allowing only a specific **originator** identity to inflate or deflate the supply.
 {% endhint %}
 
 ### Examples
