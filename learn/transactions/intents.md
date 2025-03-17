@@ -22,7 +22,7 @@ Below, we show examples of a balanced transaction that can directly be executed 
 
 {% tabs %}
 {% tab title="Basic Intent" %}
-Alice and Bob own apple <kbd>🍏</kbd> and banana <kbd>🍌</kbd> resources. Both want to trade their fruits and know exactly what they want. Both don't need to know each other.
+Alice and Bob own apple <kbd>🍏</kbd> and banana <kbd>🍌</kbd> resources. Both want to swap their fruits and know exactly what they want. Both don't need to know each other.
 
 #### Alice's intent
 
@@ -64,7 +64,7 @@ This outcome is equivalent to two balanced transactions (see the previous tab) w
 {% endtab %}
 
 {% tab title="Advanced Intent & Solution" %}
-Alice and Bob own apple <kbd>🍏</kbd> and banana <kbd>🍌</kbd> resources. Both want to trade some of their fruits within specific constraints. Both don't know each other.
+Alice and Bob own apple <kbd>🍏</kbd> and banana <kbd>🍌</kbd> resources. Both want to swap some of their fruits within specific constraints. Both don't know each other.
 
 Both, Alice and Bob express their intents over the preferred state transition as ephemeral intent resources <kbd>💬</kbd> to solver Sally.
 
