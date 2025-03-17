@@ -21,8 +21,8 @@ In the following, we show examples of transactions that can be sent by a single 
 
 Often, transactions and actions within aim to change one or multiple properties of existing resource objects. Most of the time, a single, authorized party (i.e., the owner) can unilaterally execute the transaction. Actions can include, for example,&#x20;
 
-* Transferring a resource, which changes the owner-property
-* Splitting and merging resources, which changes the quantity property
+* Transferring a resource, which changes the owner
+* Splitting and merging resources, which changes the quantity
 
 ### Examples
 
