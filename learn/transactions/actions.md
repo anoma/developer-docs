@@ -8,5 +8,4 @@ Actions separate the transaction, i.e., consumed and created resources and relat
 
 Resource logics of created and consumed resources can only see and relate to other resources if they are part of the same action. This **context separation** is important to compose transactions with each other without causing interferences.&#x20;
 
-More details can be found in the [Anoma specs](https://specs.anoma.net/latest/arch/system/state/resource_machine/data_structures/transaction/transaction.html).
-
+The underlying action object contains standardized data fields, which are defined in the [Anoma specs](https://specs.anoma.net/latest/arch/system/state/resource_machine/data_structures/action/index.html).
