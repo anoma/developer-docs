@@ -12,7 +12,7 @@ A transaction transitions state by consuming and creating resources on execution
 ```mermaid
 flowchart LR
   user(("User"))
-  app(App)
+  app("Anoma<br>App")
   solver(("Solver"))
   executor(("Block<br>Producer"))
   utx("Unbalanced<br>Transaction")
