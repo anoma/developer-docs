@@ -17,7 +17,7 @@ Below, we show examples of a balanced transaction that can directly be executed 
 * Numbers Preceeding numbers, e.g., <kbd>4🍏</kbd> indicate the quantity of resources.
 * Names following a resource, e.g., <kbd>4🍏 Alice</kbd> , indicate who is authorized to consume it.
 * <kbd><mark style="color:blue;">Blue<mark style="color:blue;"></kbd> coloring indicates ephemeral resources.&#x20;
-* Speech bubbles <kbd>💬</kbd> indicate ephemeral intent resources expressing constraints over the transaction.
+* Speech bubbles <kbd>💬</kbd> indicate ephemeral, constraint-carrying resources.
 {% endhint %}
 
 {% tabs %}
@@ -66,7 +66,7 @@ This outcome is equivalent to two balanced transactions (see the previous tab) w
 {% tab title="Advanced Intent & Solution" %}
 Alice and Bob own apple <kbd>🍏</kbd> and banana <kbd>🍌</kbd> resources. Both want to swap some of their fruits within specific constraints. Both don't know each other.
 
-Both, Alice and Bob express their intents over the preferred state transition as ephemeral intent resources <kbd>💬</kbd> to solver Sally.
+Both, Alice and Bob express their desired outcomes in ephemeral, constraint-carrying resource <kbd>💬</kbd> to solver Sally.
 
 #### Alice's Intent
 
@@ -82,7 +82,7 @@ Both, Alice and Bob express their intents over the preferred state transition as
 
 #### &#x20;Sally's Solving Intent
 
-Seeing both intents in the intent pool, Sally comes up with a solution for the two intents:
+Seeing both intents in the intent pool, Sally comes up with a solution.
 
 "I'll give <kbd>3🍏</kbd> to Bob and take <kbd>1🍏</kbd> for myself as a fee. Furthermore, I'll give <kbd>5🍌</kbd> to Alice, return <kbd>1🍌</kbd> to Bob, and take <kbd>1🍌</kbd> for myself as a fee."
 
