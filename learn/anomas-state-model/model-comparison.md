@@ -13,10 +13,10 @@ The advantages of the **resource model** are best understood by comparison with 
 
 
 [^1]: Example:\
-    A balance of a certain resource kind is not explicit, but implicitly represented by the set of all resources of this kind owner by a certain owner.
+    A balance of a certain resource kind is not explicit, but implicitly represented by the set of all resources of this kind owned by a certain owner.
 
 [^2]: Example:\
-    A balance is not explicit, but implicitly represented by the set of all UTXO of this owner.
+    A balance is not explicit, but implicitly represented by the set of all UTXOs of this owner.
 
 [^3]: Example:
 
