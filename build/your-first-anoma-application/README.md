@@ -16,8 +16,9 @@ Before creating your first Anoma dApp, make sure to have [Juvix installed](../ge
 The goal of this tutorial is to&#x20;
 
 1. Define a "Hello World!" [Resource](../../learn/resources/).
-2. Add a [resource label](../../learn/resources/#label).
-3. Write a [transaction function](../../learn/applications/interface.md#transaction-functions) initializing the resource.
+2. Write a [transaction function](../../learn/applications/interface.md#transaction-functions) to initialize the resource.
+3. Write a [projection function](../../learn/applications/interface.md#projection-functions) to allow read-interaction with the application state.
+4. Get your application to run locally.
 
 ### Project Setup
 
@@ -43,12 +44,12 @@ import PackageDescription.V2 open;
 
 package : Package :=
   defaultPackage@{
-    name := "simple-hello-world";
+    name := "hello-world";
     dependencies :=
       [
-        github "anoma" "juvix-stdlib" "v0.10.1";
-        github "anoma" "anoma-applib" "v0.7.2";
-        github "anoma" "juvix-mtl" "v0.2.1";
+        github "anoma" "juvix-stdlib" "v0.11.0";
+        github "anoma" "anoma-applib" "v0.10.1";
+        github "anoma" "juvix-mtl" "v0.3.0";
       ];
   };
 ```

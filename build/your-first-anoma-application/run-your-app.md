@@ -12,10 +12,10 @@ Amazing, we have written the code we need to compile a `HelloWorld` resource obj
 The following way of running the Anoma Client and Node are temporary and thus, Work-In-Progress areas which are specific to the **current stage of the devnet**.
 {% endhint %}
 
-First and foremost, we need a local version of the `artem/juvix-node-integration-v0.28` branch of [Anoma's codebase](https://github.com/anoma/anoma/tree/artem/juvix-node-integration-v0.28), install its dependencies, and compile the code. For a detailed description on how to do these steps, please follow this [README](https://github.com/anoma/anoma/blob/artem/juvix-node-integration-v0.28/README.md).
+First and foremost, we need a local version of the `6a07f590a5a1addb52fa7f6e39dd9315accc93c5` commit of [Anoma's codebase](https://github.com/anoma/anoma/commit/6a07f590a5a1addb52fa7f6e39dd9315accc93c5), install its dependencies, and compile the code. For a detailed description on how to do these steps, please follow this [README](https://github.com/anoma/anoma/blob/base/README.md).
 
 {% hint style="danger" %}
-The recommended branch will soon change to `testnet-01` , once integrations have been merged.
+As we continue to work towards a stable testnet release, we will further update recommended commits of the Anoma codebase.
 {% endhint %}
 
 Before we can create the necessary `makefile`, we need to install its dependencies.
@@ -65,6 +65,13 @@ ANOMA_PATH ?= $(error set the ANOMA_PATH variable to a path to an anoma clone)
 base-path = .
 base = SimpleHelloWorld
 get-message = GetMessage
+root = $(shell pwd)
+
+ifneq ($(XDG_CONFIG_HOME),)
+    juvix-cmd = XDG_CONFIG_HOME=$(XDG_CONFIG_HOME) juvix
+else
+    juvix-cmd = juvix
+endif
 
 anoma-build-dir = anoma-build
 anoma-build = $(anoma-build-dir)/.exists
@@ -88,22 +95,22 @@ port = $(anoma-build-dir)/port
 host = $(anoma-build-dir)/host
 
 $(anoma-build):
-	@mkdir -p $(anoma-build-dir)
-	@touch $(anoma-build)
+	mkdir -p $(anoma-build-dir)
+	touch $(anoma-build)
 
 .PHONY: clean
 clean:
-	@juvix clean
-	@rm -rf $(anoma-build-dir)
+	juvix clean
+	rm -rf $(anoma-build-dir)
 
 .PHONY: anoma-start
 anoma-start:
 	rm -f $(config)
 ifdef ANOMA_DEBUG
 	cd $(ANOMA_PATH) && \
-		mix run --no-halt $(root)/../../start-config.exs
+		mix phx.server --no-halt $(root)/../start-config.exs
 else
-	juvix dev anoma start --force --anoma-dir $(ANOMA_PATH)
+	$(juvix-cmd) dev anoma start --force --anoma-dir $(ANOMA_PATH)
 endif
 
 .PHONY: anoma-stop
@@ -111,7 +118,7 @@ anoma-stop:
 ifdef ANOMA_DEBUG
 	@echo "ANOMA_DEBUG is incompatible with anoma-stop" && false
 else
-	juvix dev anoma stop
+	$(juvix-cmd) dev anoma stop
 endif
 
 .PHONY: $(message-file)
@@ -120,11 +127,15 @@ $(message-file): $(anoma-build)
 	> $(message-file)
 
 $(config): $(anoma-build)
-	@juvix dev anoma print-config > $(config)
+ifdef ANOMA_DEBUG
+	cp $(ANOMA_PATH)/config.yaml $(config)
+else
+	$(juvix-cmd) dev anoma print-config > $(config)
+endif
 
 .PHONY: add-transaction
 add-transaction: $(proved) $(config)
-	@juvix dev anoma -c $(config) add-transaction $(proved)
+	$(juvix-cmd) dev anoma -c $(config) add-transaction $(proved)
 
 .PHONY: get-last-message
 get-last-message: $(last-message-txt)
@@ -132,28 +143,28 @@ get-last-message: $(last-message-txt)
 
 .PHONY: $(last-message-txt)
 $(last-message-txt): $(get-message-nockma) $(config) $(unspent-resources)
-	@tail -n 1 $(unspent-resources) > $(temp-file)
-	@juvix dev anoma -c $(config) prove $(get-message-nockma) -o $(get-message-proved) --arg 'base64:$(temp-file)'
-	@juvix dev nockma encode --cue --from bytes --to bytes < anoma-build/GetMessage.proved.nockma > $(last-message-txt)
+	tail -n 1 $(unspent-resources) > $(temp-file)
+	$(juvix-cmd) dev anoma -c $(config) prove $(get-message-nockma) -o $(get-message-proved) --arg 'base64:$(temp-file)'
+	$(juvix-cmd) dev nockma encode --cue --from bytes --to bytes < anoma-build/GetMessage.proved.nockma > $(last-message-txt)
 
 $(nockma): $(juvix) $(anoma-build)
-	@juvix compile anoma $(juvix) -o $(nockma)
+	$(juvix-cmd) compile anoma $(juvix) -o $(nockma)
 
 $(proved): $(nockma) $(config)
-	@juvix dev anoma -c $(config) prove $(nockma) -o $(proved)
+	$(juvix-cmd) dev anoma -c $(config) prove $(nockma) -o $(proved)
 
 $(get-message-nockma): $(anoma-build) $(get-message-juvix)
-	@juvix compile anoma $(get-message-juvix) -o $(get-message-nockma)
+	$(juvix-cmd) compile anoma $(get-message-juvix) -o $(get-message-nockma)
 
 .PHONY: $(unspent-resources)
 $(unspent-resources): $(anoma-build) $(host) $(port)
-	@grpcurl -plaintext $$(cat $(host)):$$(cat $(port)) Anoma.Protobuf.IndexerService.ListUnspentResources | jq -r '.unspentResources[-1] // error("no messages exist")' > $(unspent-resources)
+	curl -X GET $$(cat $(host)):$$(cat $(port))/indexer/unspent-resources | jq -r '.unspent_resources[-1] // error("no messages exist")' > $(unspent-resources)
 
 $(host): $(config)
-	@yq -r '.url' $(config) | tr -d '\n' > $(host)
+	yq -r '.url' $(config) | tr -d '\n' > $(host)
 
 $(port): $(config)
-	@yq -r '.port' $(config) | tr -d '\n' > $(port)
+	yq -r '.port' $(config) | tr -d '\n' > $(port)
 ```
 
 Importantly, we first need to set the environment variable `$ANOMA_PATH` to the path of the Anoma node clone (use something like `export ANOMA_PATH=...` in the terminal to set it).

@@ -1,7 +1,7 @@
 ---
 description: >-
-  In this page, we're defining a resource object and giving it a custom label,
-  "Hello World!".
+  In this page, we're defining a resource object and preparing it to receive a
+  custom message.
 ---
 
 # Define a Resource
@@ -23,9 +23,10 @@ Next, we preface our `HelloWorld.juvix` file with the standard `module` and `imp
 -- At the start of a Juvix file, we must declare a module with the filename.
 module HelloWorld;
 
--- We import the standard library prelude as well as the Applib library.
+-- We import the standard library prelude as well as the Applib library and a library -- for encoding our logic in the next step.
 import Stdlib.Prelude open;
 import Applib open;
+import Anoma.Encode open;
 ```
 {% endcode %}
 
@@ -38,25 +39,27 @@ Let's start by putting default values for `logic` and `value` and pass the `mess
 -- ### Module, imports ###
 
 --- A logic function that is always valid.
-logic (publicInputs : Instance) (privateInputs : Witness) : Bool := true;
+logic : Logic := Logic.mk \{_ := true};
 
 --- Creates a new ;Resource; that stores a ;String; message.
 --- @param nonce A number used to ensure resource uniqueness
 --- @param message The message to store in the ;Resource;.
 mkHelloWorldResource
-  (nonce : Nat)
+  (nonce : Nonce)
   (message : String)
   {ephemeral : Bool := false}
   : Resource :=
   mkResource@{
-    label := builtinAnomaEncode message;
-    logic;
-    value := 0;
+    label := Label.fromNat (builtinAnomaEncode message);
+    logic := Encoded.encode logic;
+    value := AnomaAtom.fromNat 0;
   };
 ```
 {% endcode %}
 
-In the context of our HelloWorld application, this implies that we're passing the "Hello World!"  `message` when we're creating the resource. This allows us to set any string, like "Hello Anomages!". In addition to that we assign `true` to the `logic`, implying that this resource will not have any logic constraints. Similarly, we assign zero for `value` which is an arbitrary default.
+In the context of our HelloWorld application, this implies that we're passing the "Hello World!"  `message` when we're creating the resource. This allows us to set any string, like "Hello Anomages!". In this specific application, this might not seem too useful as we're going to hardcode the message as part of the transaction function. Nevertheless, this becomes very helpful when e.g. adding a frontend that allows us to specify an arbitrary message - check out [this repository](https://github.com/anoma/anoma-apps/tree/main/HelloWorld) for inspiration.&#x20;
+
+In addition to that we create an object of type `Logic` which is always `true` and pass it to `logic`, implying that this resource will not have any logic constraints. Similarly, we assign zero for `value` which is an arbitrary default.
 
 Let's continue adding missing parameters:
 
@@ -65,16 +68,19 @@ Let's continue adding missing parameters:
 -- ### Module, imports, and logic ###
 
 mkHelloWorldResource
-  (nonce : Nat) (message : String) {ephemeral : Bool := false} : Resource :=
+  (nonce : Nonce) 
+  (message : String) 
+  {ephemeral : Bool := false} 
+  : Resource :=
   mkResource@{
-    label := builtinAnomaEncode message;
-    logic;
-    value := 0;
+    label := Label.fromNat (builtinAnomaEncode message);
+    logic := Encoded.encode logic;
+    value := AnomaAtom.fromNat 0;
     quantity := 1;
-    nonce;
+    nonce := Nonce.toRaw nonce;
     ephemeral;
     randSeed := 0;
-    nullifierKeyCommitment := 0;
+    nullifierKeyCommitment := AnomaAtom.fromNat 0;
   };
 ```
 {% endcode %}
@@ -101,27 +107,28 @@ module HelloWorld;
 
 import Stdlib.Prelude open;
 import Applib open;
+import Anoma.Encode open;
 
 --- A logic function that is always valid.
-logic (publicInputs : Instance) (privateInputs : Witness) : Bool := true;
+logic : Logic := Logic.mk \{_ := true};
 
 --- Creates a new ;Resource; that stores a ;String; message.
 --- @param nonce A number used to ensure resource uniqueness
 --- @param message The message to store in the ;Resource;.
 mkHelloWorldResource
-  (nonce : Nat)
+  (nonce : Nonce)
   (message : String)
   {ephemeral : Bool := false}
   : Resource :=
-  mkResource@{
-    label := builtinAnomaEncode message;
-    logic;
-    value := 0;
+  Resource.mk@{
+    label := Label.fromNat (builtinAnomaEncode message);
+    logic := Encoded.encode logic;
+    value := AnomaAtom.fromNat 0;
     quantity := 1;
-    nonce;
+    nonce := Nonce.toRaw nonce;
     ephemeral;
-    randSeed := 0;
-    nullifierKeyCommitment := 0;
+    unusedRandSeed := 0;
+    nullifierKeyCommitment := AnomaAtom.fromNat 0;
   };
 ```
 {% endcode %}

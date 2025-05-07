@@ -17,7 +17,7 @@ Please select from the options below to install the Juvix compiler on your syste
 * macOS `x86_64` and `aarch64 (M1/M2)`
 
 {% hint style="info" %}
-All example applications are currently compliant with the `anoma-apps` [v0.2.0 release](https://github.com/anoma/anoma-apps/releases/tag/v0.2.0).
+All example applications are currently compliant with the `anoma-apps` [v0.4.1 release](https://github.com/anoma/anoma-apps/releases/tag/v0.4.1).
 {% endhint %}
 
 {% stepper %}
@@ -76,8 +76,8 @@ brew install --overwrite juvix-nightly
 
 Alternatively, you can download and unzip the compiler executable linked below
 
-* [macOS x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-01-23-0.6.9-6ff4d88/juvix-darwin-x86_64.tar.gz)
-* [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-01-23-0.6.9-6ff4d88/juvix-darwin-aarch64.tar.gz)
+* [macOS x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-05-06-0.6.10-682a6fa/juvix-darwin-x86_64.tar.gz)
+* [macOS aarch64 (M1/M2)](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-05-06-0.6.10-682a6fa/juvix-darwin-aarch64.tar.gz)
 
 and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}
@@ -85,7 +85,7 @@ and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% tab title="Linux" %}
 Download and unzip the compiler executable linked below
 
-* [Linux x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-01-23-0.6.9-6ff4d88/juvix-linux-x86_64.tar.gz)
+* [Linux x86\_64](https://github.com/anoma/juvix-nightly-builds/releases/download/nightly-2025-05-06-0.6.10-682a6fa/juvix-linux-x86_64.tar.gz)
 
 and move it to a directory on your shell's `PATH (e.g., /usr/local/bin`).
 {% endtab %}

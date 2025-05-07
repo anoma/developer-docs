@@ -12,7 +12,7 @@ touch GetMessage.juvix
 ```
 {% endcode %}
 
-We can now specify `GetMessage.juvix`. It will take an `encodedResource` parameter of type `Nat`. As the name suggests, this is an encoded resource object which we will first apply `anomaDecode` to, then access its label via `Resource.label`. We finally retrieve the underlying `String` type by applying another `anomaDecode`.
+We can now specify `GetMessage.juvix`. It will take a `resource` parameter of type `Resource`. As the name suggests, this is a resource object and we're able to access its individual parameters (which you can again find details about in [resources](../../learn/resources/ "mention")). To access the label, we just use `Resource.label`, then transform the label type to a `Nat` via `Label.toNat`, and finally decode it via `builtinAnomaDecode`. We now have our cleartext label, in this case "Hello World!".&#x20;
 
 {% code title="GetMessage.juvix" %}
 ```agda
@@ -23,7 +23,7 @@ import Applib open;
 
 --- Extract the message from a HelloWorld ;Resource;
 main (resource : Resource) : String :=
-  resource |> Resource.label |> builtinAnomaDecode;
+  resource |> Resource.label |> Label.toNat |> builtinAnomaDecode;
 ```
 {% endcode %}
 
