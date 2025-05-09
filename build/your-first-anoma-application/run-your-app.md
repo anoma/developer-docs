@@ -63,7 +63,7 @@ Please mind that the `makefile` is temporary and an **artifact of the current st
 ```makefile
 ANOMA_PATH ?= $(error set the ANOMA_PATH variable to a path to an anoma clone)
 base-path = .
-base = SimpleHelloWorld
+base = HelloWorld
 get-message = GetMessage
 root = $(shell pwd)
 
@@ -172,7 +172,7 @@ Importantly, we first need to set the environment variable `$ANOMA_PATH` to the 
 ```bash
 # Set path to the folder where Anoma is cloned and compiled
 # Example:
-# export ANOMA_PATH=~/anoma/HelloWorld
+# export ANOMA_PATH=~/anoma/anoma
 export ANOMA_PATH=#INSERT_PATH_TO_ANOMA_FOLDER
 ```
 
