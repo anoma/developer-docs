@@ -49,7 +49,7 @@ mkHelloWorldResource
   (message : String)
   {ephemeral : Bool := false}
   : Resource :=
-  mkResource@{
+  Resource.mk@{
     label := Label.fromNat (builtinAnomaEncode message);
     logic := Encoded.encode logic;
     value := AnomaAtom.fromNat 0;
@@ -72,14 +72,14 @@ mkHelloWorldResource
   (message : String) 
   {ephemeral : Bool := false} 
   : Resource :=
-  mkResource@{
+  Resource.mk@{
     label := Label.fromNat (builtinAnomaEncode message);
     logic := Encoded.encode logic;
     value := AnomaAtom.fromNat 0;
     quantity := 1;
     nonce := Nonce.toRaw nonce;
     ephemeral;
-    randSeed := 0;
+    unusedRandSeed := 0;
     nullifierKeyCommitment := AnomaAtom.fromNat 0;
   };
 ```
@@ -90,7 +90,7 @@ In the above code, we
 * assign `quantity` of 1
 * pass function parameter `nonce`
 * pass function parameter `ephemeral`
-* assign default parameter 0 to `randSeed`
+* assign default parameter 0 to `unusedRandSeed`
 * assign default parameter 0 to `nullifierKeyCommitment`
 
 {% hint style="warning" %}
