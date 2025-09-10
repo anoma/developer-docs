@@ -9,50 +9,30 @@ icon: rocket-launch
 
 ## Prerequisites
 
-Before creating your first Anoma dApp, make sure to have [Juvix installed](../getting-started.md).
+Before creating your first Anoma dApp, make sure to have followed the [getting-started.md](../getting-started.md "mention") instructions.
 
 ## Building `HelloWorld`&#x20;
 
 The goal of this tutorial is to&#x20;
 
 1. Define a "Hello World!" [Resource](../../learn/resources/).
-2. Write a [transaction function](../../learn/applications/interface.md#transaction-functions) to initialize the resource.
-3. Write a [projection function](../../learn/applications/interface.md#projection-functions) to allow read-interaction with the application state.
-4. Get your application to run locally.
+2. Generate proofs
+3. Generate the transaction object
+4. Submit a Protocol Adapter transaction
 
-### Project Setup
+### Create a New Project
 
-Let's fly through the project setup by typing the following in our terminal.
+We start by cloning the `anoma-beta-documentation` repo and then want to go to the `examples/` folder to find the `hello-world-start` example.
 
-{% code title="~/" %}
 ```bash
-mkdir HelloWorld
-cd HelloWorld
-juvix init
+git clone https://github.com/anoma/anoma-beta-documentation.git
+cd examples/hello-world-start
 ```
-{% endcode %}
 
-In the following chapter, we're going to construct the scaffolding of the [resource object](https://specs.anoma.net/latest/arch/system/state/resource_machine/data_structures/resource/index.html) and add our custom label.
+Once we have executed above code, let's run the `hello-world-start` scaffolding code before we start expanding on it.
 
-Once the Juvix project is created, we want to change the `Package.juvix` file to the following:
-
-{% code title="HelloWorld/" %}
-```agda
-module Package;
-
-import PackageDescription.V2 open;
-
-package : Package :=
-  defaultPackage@{
-    name := "hello-world";
-    dependencies :=
-      [
-        github "anoma" "juvix-stdlib" "v0.11.0";
-        github "anoma" "anoma-applib" "v0.10.1";
-        github "anoma" "juvix-mtl" "v0.3.0";
-      ];
-  };
+```bash
+cargo run
 ```
-{% endcode %}
 
-Let's start with some Juvix code. We will first define an Anoma resource.
+Great! We can now start with the actual `hello-world` code. Head over to [define-a-resource.md](define-a-resource.md "mention").
