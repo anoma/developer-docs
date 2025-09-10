@@ -1,6 +1,6 @@
 ---
-icon: vial
 description: Examples to better understand code and capabilities.
+icon: vial
 ---
 
 # Anoma App Examples
@@ -10,7 +10,7 @@ The Anoma Application Example will feature a list of examples and will be contin
 #### List of future Anoma application examples
 
 * Counter
-* Rock-Paper-Scissors
+* Transfers
 * Kudos
 
 You can refer to our [Twitter](https://twitter.com/anoma) and [Discord](https://discord.gg/anoma) to stay up-to-date on the latest information for developers.

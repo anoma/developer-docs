@@ -1,5 +1,6 @@
 ---
 description: This page explains how to run your application locally.
+hidden: true
 ---
 
 # Run your App

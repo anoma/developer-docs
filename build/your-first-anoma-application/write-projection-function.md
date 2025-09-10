@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Write a Projection Function
 
 Let's enrich our HelloWorld application by adding functionality that allows us to read the label we have just created.

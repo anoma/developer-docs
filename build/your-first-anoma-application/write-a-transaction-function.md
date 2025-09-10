@@ -2,6 +2,7 @@
 description: >-
   This page walks you through writing a transaction function that initializes
   our resource object.
+hidden: true
 ---
 
 # Write a Transaction Function
