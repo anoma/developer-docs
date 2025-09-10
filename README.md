@@ -5,6 +5,10 @@ icon: hand-wave
 
 # Overview
 
+{% hint style="warning" %}
+The Anoma Developer Documentation is currently under active development! Content might change as we're documenting the latest architectural changes of Anoma Beta and their impact on application development.
+{% endhint %}
+
 Anoma is the decentralized OS powering a unified app layer for all Web3. With Anoma, developers can write one app that works on any chain. Anoma frees developers from the complexity of infrastructure so they can focus on what matters: building apps and experiences that people love. Anoma introduces a next-gen intent-centric architecture optimized for app development and UX, enabling Web3 to support a rich ecosystem of apps that can finally compete with the functionality and experience of Web2.
 
 ## What's the TL;DR?
