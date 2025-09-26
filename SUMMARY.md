@@ -45,3 +45,9 @@
   * [Resource](data-structures/resource.md)
   * [Transaction](data-structures/transaction.md)
   * [Action](data-structures/action.md)
+
+## RESOURCES
+
+* [Website](https://anoma.net/)
+* [Github](https://github.com/anoma)
+* [Blog](https://anoma.net/blog)
