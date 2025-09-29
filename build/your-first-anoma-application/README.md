@@ -22,14 +22,14 @@ The goal of this tutorial is to&#x20;
 
 ### Create a New Project
 
-We start by cloning the `anoma-beta-documentation` repo and then want to go to the `examples/` folder to find the `hello-world-start` example.
+We start by cloning the `anoma-beta-documentation` repo and then want to go to the `examples/` folder to find the `hello-world` example.
 
 ```bash
 git clone https://github.com/anoma/anoma-beta-documentation.git
-cd examples/hello-world-start
+cd examples/hello-world
 ```
 
-Once we have executed above code, let's run the `hello-world-start` scaffolding code before we start expanding on it.
+Once we have executed above code, let's run the `hello-world` scaffolding code before we start expanding on it.
 
 ```bash
 cargo run
