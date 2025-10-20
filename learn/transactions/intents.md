@@ -66,7 +66,7 @@ This outcome is equivalent to two balanced transactions (see the previous tab) w
 {% tab title="Advanced Intent & Solution" %}
 Alice and Bob own apple <kbd>🍏</kbd> and banana <kbd>🍌</kbd> resources. Both want to swap some of their fruits within specific constraints. Both don't know each other.
 
-Both, Alice and Bob express their desired outcomes in ephemeral, constraint-carrying resource <kbd>💬</kbd> to solver Sally.
+Both, Alice and Bob express their desired outcomes in ephemeral, constraint-carrying resources <kbd>💬</kbd> to solver Sally.
 
 #### Alice's Intent
 
